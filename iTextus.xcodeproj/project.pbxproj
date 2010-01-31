@@ -1,0 +1,638 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		072301E5111333C300F65F6B /* JJTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072301E4111333C300F65F6B /* JJTextView.m */; };
+		0723023911133B5A00F65F6B /* JJBook.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0723023811133B5A00F65F6B /* JJBook.mm */; };
+		0723045F1113F10000F65F6B /* CharDistribution.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 072304071113F06D00F65F6B /* CharDistribution.cpp */; };
+		072304601113F10000F65F6B /* JpCntx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0723040B1113F06D00F65F6B /* JpCntx.cpp */; };
+		072304611113F10000F65F6B /* LangBulgarianModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0723040D1113F06D00F65F6B /* LangBulgarianModel.cpp */; };
+		072304621113F10000F65F6B /* LangCyrillicModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0723040E1113F06D00F65F6B /* LangCyrillicModel.cpp */; };
+		072304631113F10000F65F6B /* LangGreekModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0723040F1113F06D00F65F6B /* LangGreekModel.cpp */; };
+		072304641113F10000F65F6B /* LangHebrewModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 072304101113F06D00F65F6B /* LangHebrewModel.cpp */; };
+		072304651113F10000F65F6B /* LangHungarianModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 072304111113F06D00F65F6B /* LangHungarianModel.cpp */; };
+		072304661113F10000F65F6B /* LangThaiModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 072304121113F06D00F65F6B /* LangThaiModel.cpp */; };
+		072304671113F10000F65F6B /* nsBig5Prober.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 072304131113F06D00F65F6B /* nsBig5Prober.cpp */; };
+		072304681113F10000F65F6B /* nsCharSetProber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 072304151113F06D00F65F6B /* nsCharSetProber.cpp */; };
+		072304691113F10000F65F6B /* nsEscCharsetProber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 072304191113F06D00F65F6B /* nsEscCharsetProber.cpp */; };
+		0723046A1113F10000F65F6B /* nsEUCJPProber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0723041C1113F06D00F65F6B /* nsEUCJPProber.cpp */; };
+		0723046B1113F10000F65F6B /* nsEUCKRProber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0723041E1113F06D00F65F6B /* nsEUCKRProber.cpp */; };
+		0723046C1113F10000F65F6B /* nsEUCTWProber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 072304201113F06D00F65F6B /* nsEUCTWProber.cpp */; };
+		0723046D1113F10000F65F6B /* nsGB2312Prober.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 072304221113F06D00F65F6B /* nsGB2312Prober.cpp */; };
+		0723046E1113F10000F65F6B /* nsHebrewProber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 072304241113F06D00F65F6B /* nsHebrewProber.cpp */; };
+		0723046F1113F10000F65F6B /* nsLatin1Prober.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 072304261113F06D00F65F6B /* nsLatin1Prober.cpp */; };
+		072304701113F10000F65F6B /* nsMBCSGroupProber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 072304281113F06D00F65F6B /* nsMBCSGroupProber.cpp */; };
+		072304711113F10000F65F6B /* nsMBCSSM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0723042A1113F06D00F65F6B /* nsMBCSSM.cpp */; };
+		072304721113F10000F65F6B /* nsSBCharSetProber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0723042C1113F06D00F65F6B /* nsSBCharSetProber.cpp */; };
+		072304731113F10000F65F6B /* nsSBCSGroupProber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0723042E1113F06D00F65F6B /* nsSBCSGroupProber.cpp */; };
+		072304741113F10000F65F6B /* nsSJISProber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 072304301113F06D00F65F6B /* nsSJISProber.cpp */; };
+		072304751113F10000F65F6B /* nsUniversalDetector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 072304321113F06D00F65F6B /* nsUniversalDetector.cpp */; };
+		072304761113F10000F65F6B /* nsUTF8Prober.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 072304341113F06D00F65F6B /* nsUTF8Prober.cpp */; };
+		072304771113F11100F65F6B /* chardetect.h in Headers */ = {isa = PBXBuildFile; fileRef = 0723045E1113F09100F65F6B /* chardetect.h */; };
+		0723051A1113F9EB00F65F6B /* libCharsetDetector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 072304871113F1C700F65F6B /* libCharsetDetector.a */; };
+		0723056B1113FA7C00F65F6B /* impl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0723040A1113F06D00F65F6B /* impl.cpp */; };
+		072305721113FAE100F65F6B /* nsEscSM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0723041B1113F06D00F65F6B /* nsEscSM.cpp */; };
+		072305BC1114049C00F65F6B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072305BB1114049C00F65F6B /* CoreText.framework */; };
+		072305FC1114084800F65F6B /* fzkaigbk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 072305FB1114084800F65F6B /* fzkaigbk.ttf */; };
+		072DDF16111495A1004DE037 /* JJLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 072DDF15111495A1004DE037 /* JJLine.m */; };
+		072DDF7211152EC6004DE037 /* JJPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 072DDF7111152EC6004DE037 /* JJPage.m */; };
+		1D3623260D0F684500981E51 /* iTextusAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* iTextusAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2804200B108E984D000629CD /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28042008108E984D000629CD /* MasterViewController.m */; };
+		2804200C108E984D000629CD /* DetailViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2804200A108E984D000629CD /* DetailViewController.mm */; };
+		2804203C108E9BAB000629CD /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2804203B108E9BAB000629CD /* DetailView.xib */; };
+		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
+		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0723047F1113F16B00F65F6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 072303F91113EEFC00F65F6B;
+			remoteInfo = libCharsetDetector;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		072301E3111333C300F65F6B /* JJTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJTextView.h; path = ../JJTextView.h; sourceTree = "<group>"; };
+		072301E4111333C300F65F6B /* JJTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJTextView.m; path = ../JJTextView.m; sourceTree = "<group>"; };
+		0723023711133B5A00F65F6B /* JJBook.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = JJBook.h; sourceTree = "<group>"; };
+		0723023811133B5A00F65F6B /* JJBook.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = JJBook.mm; sourceTree = "<group>"; };
+		072304071113F06D00F65F6B /* CharDistribution.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CharDistribution.cpp; sourceTree = "<group>"; };
+		072304081113F06D00F65F6B /* CharDistribution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharDistribution.h; sourceTree = "<group>"; };
+		0723040A1113F06D00F65F6B /* impl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = impl.cpp; sourceTree = "<group>"; };
+		0723040B1113F06D00F65F6B /* JpCntx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JpCntx.cpp; sourceTree = "<group>"; };
+		0723040C1113F06D00F65F6B /* JpCntx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JpCntx.h; sourceTree = "<group>"; };
+		0723040D1113F06D00F65F6B /* LangBulgarianModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LangBulgarianModel.cpp; sourceTree = "<group>"; };
+		0723040E1113F06D00F65F6B /* LangCyrillicModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LangCyrillicModel.cpp; sourceTree = "<group>"; };
+		0723040F1113F06D00F65F6B /* LangGreekModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LangGreekModel.cpp; sourceTree = "<group>"; };
+		072304101113F06D00F65F6B /* LangHebrewModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LangHebrewModel.cpp; sourceTree = "<group>"; };
+		072304111113F06D00F65F6B /* LangHungarianModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LangHungarianModel.cpp; sourceTree = "<group>"; };
+		072304121113F06D00F65F6B /* LangThaiModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LangThaiModel.cpp; sourceTree = "<group>"; };
+		072304131113F06D00F65F6B /* nsBig5Prober.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nsBig5Prober.cpp; sourceTree = "<group>"; };
+		072304141113F06D00F65F6B /* nsBig5Prober.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nsBig5Prober.h; sourceTree = "<group>"; };
+		072304151113F06D00F65F6B /* nsCharSetProber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nsCharSetProber.cpp; sourceTree = "<group>"; };
+		072304161113F06D00F65F6B /* nsCharSetProber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nsCharSetProber.h; sourceTree = "<group>"; };
+		072304171113F06D00F65F6B /* nsCodingStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nsCodingStateMachine.h; sourceTree = "<group>"; };
+		072304181113F06D00F65F6B /* nscore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nscore.h; sourceTree = "<group>"; };
+		072304191113F06D00F65F6B /* nsEscCharsetProber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nsEscCharsetProber.cpp; sourceTree = "<group>"; };
+		0723041A1113F06D00F65F6B /* nsEscCharsetProber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nsEscCharsetProber.h; sourceTree = "<group>"; };
+		0723041B1113F06D00F65F6B /* nsEscSM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nsEscSM.cpp; sourceTree = "<group>"; };
+		0723041C1113F06D00F65F6B /* nsEUCJPProber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nsEUCJPProber.cpp; sourceTree = "<group>"; };
+		0723041D1113F06D00F65F6B /* nsEUCJPProber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nsEUCJPProber.h; sourceTree = "<group>"; };
+		0723041E1113F06D00F65F6B /* nsEUCKRProber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nsEUCKRProber.cpp; sourceTree = "<group>"; };
+		0723041F1113F06D00F65F6B /* nsEUCKRProber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nsEUCKRProber.h; sourceTree = "<group>"; };
+		072304201113F06D00F65F6B /* nsEUCTWProber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nsEUCTWProber.cpp; sourceTree = "<group>"; };
+		072304211113F06D00F65F6B /* nsEUCTWProber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nsEUCTWProber.h; sourceTree = "<group>"; };
+		072304221113F06D00F65F6B /* nsGB2312Prober.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nsGB2312Prober.cpp; sourceTree = "<group>"; };
+		072304231113F06D00F65F6B /* nsGB2312Prober.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nsGB2312Prober.h; sourceTree = "<group>"; };
+		072304241113F06D00F65F6B /* nsHebrewProber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nsHebrewProber.cpp; sourceTree = "<group>"; };
+		072304251113F06D00F65F6B /* nsHebrewProber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nsHebrewProber.h; sourceTree = "<group>"; };
+		072304261113F06D00F65F6B /* nsLatin1Prober.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nsLatin1Prober.cpp; sourceTree = "<group>"; };
+		072304271113F06D00F65F6B /* nsLatin1Prober.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nsLatin1Prober.h; sourceTree = "<group>"; };
+		072304281113F06D00F65F6B /* nsMBCSGroupProber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nsMBCSGroupProber.cpp; sourceTree = "<group>"; };
+		072304291113F06D00F65F6B /* nsMBCSGroupProber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nsMBCSGroupProber.h; sourceTree = "<group>"; };
+		0723042A1113F06D00F65F6B /* nsMBCSSM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nsMBCSSM.cpp; sourceTree = "<group>"; };
+		0723042B1113F06D00F65F6B /* nsPkgInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nsPkgInt.h; sourceTree = "<group>"; };
+		0723042C1113F06D00F65F6B /* nsSBCharSetProber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nsSBCharSetProber.cpp; sourceTree = "<group>"; };
+		0723042D1113F06D00F65F6B /* nsSBCharSetProber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nsSBCharSetProber.h; sourceTree = "<group>"; };
+		0723042E1113F06D00F65F6B /* nsSBCSGroupProber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nsSBCSGroupProber.cpp; sourceTree = "<group>"; };
+		0723042F1113F06D00F65F6B /* nsSBCSGroupProber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nsSBCSGroupProber.h; sourceTree = "<group>"; };
+		072304301113F06D00F65F6B /* nsSJISProber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nsSJISProber.cpp; sourceTree = "<group>"; };
+		072304311113F06D00F65F6B /* nsSJISProber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nsSJISProber.h; sourceTree = "<group>"; };
+		072304321113F06D00F65F6B /* nsUniversalDetector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nsUniversalDetector.cpp; sourceTree = "<group>"; };
+		072304331113F06D00F65F6B /* nsUniversalDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nsUniversalDetector.h; sourceTree = "<group>"; };
+		072304341113F06D00F65F6B /* nsUTF8Prober.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nsUTF8Prober.cpp; sourceTree = "<group>"; };
+		072304351113F06D00F65F6B /* nsUTF8Prober.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nsUTF8Prober.h; sourceTree = "<group>"; };
+		072304361113F06D00F65F6B /* prmem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prmem.h; sourceTree = "<group>"; };
+		072304381113F06D00F65F6B /* Big5Freq.tab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Big5Freq.tab; sourceTree = "<group>"; };
+		072304391113F06D00F65F6B /* EUCKRFreq.tab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EUCKRFreq.tab; sourceTree = "<group>"; };
+		0723043A1113F06D00F65F6B /* EUCTWFreq.tab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EUCTWFreq.tab; sourceTree = "<group>"; };
+		0723043B1113F06D00F65F6B /* GB2312Freq.tab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GB2312Freq.tab; sourceTree = "<group>"; };
+		0723043C1113F06D00F65F6B /* JISFreq.tab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JISFreq.tab; sourceTree = "<group>"; };
+		0723045E1113F09100F65F6B /* chardetect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chardetect.h; sourceTree = "<group>"; };
+		072304871113F1C700F65F6B /* libCharsetDetector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCharsetDetector.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		072305BB1114049C00F65F6B /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		072305FB1114084800F65F6B /* fzkaigbk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fzkaigbk.ttf; sourceTree = "<group>"; };
+		072DDF14111495A1004DE037 /* JJLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJLine.h; sourceTree = "<group>"; };
+		072DDF15111495A1004DE037 /* JJLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJLine.m; sourceTree = "<group>"; };
+		072DDF7011152EC6004DE037 /* JJPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJPage.h; sourceTree = "<group>"; };
+		072DDF7111152EC6004DE037 /* JJPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJPage.m; sourceTree = "<group>"; };
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* iTextusAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTextusAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* iTextusAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTextusAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* iTextus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTextus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		28042007108E984D000629CD /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		28042008108E984D000629CD /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		28042009108E984D000629CD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		2804200A108E984D000629CD /* DetailViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DetailViewController.mm; sourceTree = "<group>"; };
+		2804203B108E9BAB000629CD /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
+		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28A0AAE50D9B0CCF005BE974 /* iTextus_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTextus_Prefix.pch; sourceTree = "<group>"; };
+		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* iTextus-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iTextus-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		072303F81113EEFC00F65F6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0723051A1113F9EB00F65F6B /* libCharsetDetector.a in Frameworks */,
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
+				072305BC1114049C00F65F6B /* CoreText.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		072304061113F06D00F65F6B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				072304071113F06D00F65F6B /* CharDistribution.cpp */,
+				072304081113F06D00F65F6B /* CharDistribution.h */,
+				072304091113F06D00F65F6B /* entry */,
+				0723040B1113F06D00F65F6B /* JpCntx.cpp */,
+				0723040C1113F06D00F65F6B /* JpCntx.h */,
+				0723040D1113F06D00F65F6B /* LangBulgarianModel.cpp */,
+				0723040E1113F06D00F65F6B /* LangCyrillicModel.cpp */,
+				0723040F1113F06D00F65F6B /* LangGreekModel.cpp */,
+				072304101113F06D00F65F6B /* LangHebrewModel.cpp */,
+				072304111113F06D00F65F6B /* LangHungarianModel.cpp */,
+				072304121113F06D00F65F6B /* LangThaiModel.cpp */,
+				072304131113F06D00F65F6B /* nsBig5Prober.cpp */,
+				072304141113F06D00F65F6B /* nsBig5Prober.h */,
+				072304151113F06D00F65F6B /* nsCharSetProber.cpp */,
+				072304161113F06D00F65F6B /* nsCharSetProber.h */,
+				072304171113F06D00F65F6B /* nsCodingStateMachine.h */,
+				072304181113F06D00F65F6B /* nscore.h */,
+				072304191113F06D00F65F6B /* nsEscCharsetProber.cpp */,
+				0723041A1113F06D00F65F6B /* nsEscCharsetProber.h */,
+				0723041B1113F06D00F65F6B /* nsEscSM.cpp */,
+				0723041C1113F06D00F65F6B /* nsEUCJPProber.cpp */,
+				0723041D1113F06D00F65F6B /* nsEUCJPProber.h */,
+				0723041E1113F06D00F65F6B /* nsEUCKRProber.cpp */,
+				0723041F1113F06D00F65F6B /* nsEUCKRProber.h */,
+				072304201113F06D00F65F6B /* nsEUCTWProber.cpp */,
+				072304211113F06D00F65F6B /* nsEUCTWProber.h */,
+				072304221113F06D00F65F6B /* nsGB2312Prober.cpp */,
+				072304231113F06D00F65F6B /* nsGB2312Prober.h */,
+				072304241113F06D00F65F6B /* nsHebrewProber.cpp */,
+				072304251113F06D00F65F6B /* nsHebrewProber.h */,
+				072304261113F06D00F65F6B /* nsLatin1Prober.cpp */,
+				072304271113F06D00F65F6B /* nsLatin1Prober.h */,
+				072304281113F06D00F65F6B /* nsMBCSGroupProber.cpp */,
+				072304291113F06D00F65F6B /* nsMBCSGroupProber.h */,
+				0723042A1113F06D00F65F6B /* nsMBCSSM.cpp */,
+				0723042B1113F06D00F65F6B /* nsPkgInt.h */,
+				0723042C1113F06D00F65F6B /* nsSBCharSetProber.cpp */,
+				0723042D1113F06D00F65F6B /* nsSBCharSetProber.h */,
+				0723042E1113F06D00F65F6B /* nsSBCSGroupProber.cpp */,
+				0723042F1113F06D00F65F6B /* nsSBCSGroupProber.h */,
+				072304301113F06D00F65F6B /* nsSJISProber.cpp */,
+				072304311113F06D00F65F6B /* nsSJISProber.h */,
+				072304321113F06D00F65F6B /* nsUniversalDetector.cpp */,
+				072304331113F06D00F65F6B /* nsUniversalDetector.h */,
+				072304341113F06D00F65F6B /* nsUTF8Prober.cpp */,
+				072304351113F06D00F65F6B /* nsUTF8Prober.h */,
+				072304361113F06D00F65F6B /* prmem.h */,
+				072304371113F06D00F65F6B /* tables */,
+			);
+			name = src;
+			path = "charset-detector/src";
+			sourceTree = "<group>";
+		};
+		072304091113F06D00F65F6B /* entry */ = {
+			isa = PBXGroup;
+			children = (
+				0723040A1113F06D00F65F6B /* impl.cpp */,
+			);
+			path = entry;
+			sourceTree = "<group>";
+		};
+		072304371113F06D00F65F6B /* tables */ = {
+			isa = PBXGroup;
+			children = (
+				072304381113F06D00F65F6B /* Big5Freq.tab */,
+				072304391113F06D00F65F6B /* EUCKRFreq.tab */,
+				0723043A1113F06D00F65F6B /* EUCTWFreq.tab */,
+				0723043B1113F06D00F65F6B /* GB2312Freq.tab */,
+				0723043C1113F06D00F65F6B /* JISFreq.tab */,
+			);
+			path = tables;
+			sourceTree = "<group>";
+		};
+		0723045C1113F07700F65F6B /* charset-detector */ = {
+			isa = PBXGroup;
+			children = (
+				0723045D1113F09100F65F6B /* include */,
+				072304061113F06D00F65F6B /* src */,
+			);
+			name = "charset-detector";
+			sourceTree = "<group>";
+		};
+		0723045D1113F09100F65F6B /* include */ = {
+			isa = PBXGroup;
+			children = (
+				0723045E1113F09100F65F6B /* chardetect.h */,
+			);
+			name = include;
+			path = "charset-detector/include";
+			sourceTree = "<group>";
+		};
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0723023711133B5A00F65F6B /* JJBook.h */,
+				0723023811133B5A00F65F6B /* JJBook.mm */,
+				1D3623240D0F684500981E51 /* iTextusAppDelegate.h */,
+				1D3623250D0F684500981E51 /* iTextusAppDelegate.m */,
+				28042007108E984D000629CD /* MasterViewController.h */,
+				28042008108E984D000629CD /* MasterViewController.m */,
+				28042009108E984D000629CD /* DetailViewController.h */,
+				2804200A108E984D000629CD /* DetailViewController.mm */,
+				072301E3111333C300F65F6B /* JJTextView.h */,
+				072301E4111333C300F65F6B /* JJTextView.m */,
+				072DDF14111495A1004DE037 /* JJLine.h */,
+				072DDF15111495A1004DE037 /* JJLine.m */,
+				072DDF7011152EC6004DE037 /* JJPage.h */,
+				072DDF7111152EC6004DE037 /* JJPage.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* iTextus.app */,
+				072304871113F1C700F65F6B /* libCharsetDetector.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				0723045C1113F07700F65F6B /* charset-detector */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources-iPad */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				28A0AAE50D9B0CCF005BE974 /* iTextus_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources-iPad */ = {
+			isa = PBXGroup;
+			children = (
+				072305FB1114084800F65F6B /* fzkaigbk.ttf */,
+				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
+				2804203B108E9BAB000629CD /* DetailView.xib */,
+				8D1107310486CEB800E47090 /* iTextus-Info.plist */,
+			);
+			name = "Resources-iPad";
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				072305BB1114049C00F65F6B /* CoreText.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		072303F61113EEFC00F65F6B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				072304771113F11100F65F6B /* chardetect.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		072303F91113EEFC00F65F6B /* CharsetDetector */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 072303FD1113EF1B00F65F6B /* Build configuration list for PBXNativeTarget "CharsetDetector" */;
+			buildPhases = (
+				072303F61113EEFC00F65F6B /* Headers */,
+				072303F71113EEFC00F65F6B /* Sources */,
+				072303F81113EEFC00F65F6B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CharsetDetector;
+			productName = libCharsetDetector;
+			productReference = 072304871113F1C700F65F6B /* libCharsetDetector.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		1D6058900D05DD3D006BFB54 /* iTextus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "iTextus" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				072304801113F16B00F65F6B /* PBXTargetDependency */,
+			);
+			name = iTextus;
+			productName = iTextus;
+			productReference = 1D6058910D05DD3D006BFB54 /* iTextus.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "iTextus" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* iTextus */,
+				072303F91113EEFC00F65F6B /* CharsetDetector */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
+				2804203C108E9BAB000629CD /* DetailView.xib in Resources */,
+				072305FC1114084800F65F6B /* fzkaigbk.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		072303F71113EEFC00F65F6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0723056B1113FA7C00F65F6B /* impl.cpp in Sources */,
+				0723045F1113F10000F65F6B /* CharDistribution.cpp in Sources */,
+				072304601113F10000F65F6B /* JpCntx.cpp in Sources */,
+				072304611113F10000F65F6B /* LangBulgarianModel.cpp in Sources */,
+				072304621113F10000F65F6B /* LangCyrillicModel.cpp in Sources */,
+				072304631113F10000F65F6B /* LangGreekModel.cpp in Sources */,
+				072304641113F10000F65F6B /* LangHebrewModel.cpp in Sources */,
+				072304651113F10000F65F6B /* LangHungarianModel.cpp in Sources */,
+				072304661113F10000F65F6B /* LangThaiModel.cpp in Sources */,
+				072304671113F10000F65F6B /* nsBig5Prober.cpp in Sources */,
+				072304681113F10000F65F6B /* nsCharSetProber.cpp in Sources */,
+				072304691113F10000F65F6B /* nsEscCharsetProber.cpp in Sources */,
+				0723046A1113F10000F65F6B /* nsEUCJPProber.cpp in Sources */,
+				0723046B1113F10000F65F6B /* nsEUCKRProber.cpp in Sources */,
+				0723046C1113F10000F65F6B /* nsEUCTWProber.cpp in Sources */,
+				0723046D1113F10000F65F6B /* nsGB2312Prober.cpp in Sources */,
+				0723046E1113F10000F65F6B /* nsHebrewProber.cpp in Sources */,
+				0723046F1113F10000F65F6B /* nsLatin1Prober.cpp in Sources */,
+				072305721113FAE100F65F6B /* nsEscSM.cpp in Sources */,
+				072304701113F10000F65F6B /* nsMBCSGroupProber.cpp in Sources */,
+				072304711113F10000F65F6B /* nsMBCSSM.cpp in Sources */,
+				072304721113F10000F65F6B /* nsSBCharSetProber.cpp in Sources */,
+				072304731113F10000F65F6B /* nsSBCSGroupProber.cpp in Sources */,
+				072304741113F10000F65F6B /* nsSJISProber.cpp in Sources */,
+				072304751113F10000F65F6B /* nsUniversalDetector.cpp in Sources */,
+				072304761113F10000F65F6B /* nsUTF8Prober.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* iTextusAppDelegate.m in Sources */,
+				2804200B108E984D000629CD /* MasterViewController.m in Sources */,
+				2804200C108E984D000629CD /* DetailViewController.mm in Sources */,
+				072301E5111333C300F65F6B /* JJTextView.m in Sources */,
+				0723023911133B5A00F65F6B /* JJBook.mm in Sources */,
+				072DDF16111495A1004DE037 /* JJLine.m in Sources */,
+				072DDF7211152EC6004DE037 /* JJPage.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		072304801113F16B00F65F6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 072303F91113EEFC00F65F6B /* CharsetDetector */;
+			targetProxy = 0723047F1113F16B00F65F6B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		072303FB1113EEFD00F65F6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = (
+					"$(SOURCE_ROOT)/charset-detector/src/tables",
+					"$(SOURCE_ROOT)/charset-detector/include",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = CharsetDetector;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
+			};
+			name = Debug;
+		};
+		072303FC1113EEFD00F65F6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(SOURCE_ROOT)/charset-detector/src/tables",
+					"$(SOURCE_ROOT)/charset-detector/include",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = CharsetDetector;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = iTextus_Prefix.pch;
+				INFOPLIST_FILE = "iTextus-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/gcc/powerpc-apple-darwin9/4.0.1\"",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = iTextus;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = iTextus_Prefix.pch;
+				INFOPLIST_FILE = "iTextus-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/gcc/powerpc-apple-darwin9/4.0.1\"",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = iTextus;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/charset-detector/include";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D_REENTRANT",
+					"$(OTHER_CFLAGS)",
+				);
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.2;
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/charset-detector/include";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D_REENTRANT",
+					"$(OTHER_CFLAGS)",
+				);
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.2;
+				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = dynamic;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		072303FD1113EF1B00F65F6B /* Build configuration list for PBXNativeTarget "CharsetDetector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				072303FB1113EEFD00F65F6B /* Debug */,
+				072303FC1113EEFD00F65F6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "iTextus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "iTextus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
