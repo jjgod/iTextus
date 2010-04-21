@@ -10,17 +10,28 @@
 
 @implementation JJTextView
 
-@synthesize book;
-
-- (id) initWithFrame: (CGRect) frame
-                book: (JJBook *) theBook
+- (id) initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame])
     {
-        framesetter = NULL;
-        self.book = theBook;
+        currentPage = 0;
     }
+
     return self;
+}
+
+- (JJBook *) book
+{
+    return book;
+}
+
+- (void) setBook:(JJBook *)theBook
+{
+    if (book)
+        [book release];
+
+    book = [theBook retain];
+    currentPage = 0;
 }
 
 #define kPageHeight     400
@@ -34,6 +45,12 @@
     return frame.size;
 }
 
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    currentPage += 1;
+    [self setNeedsDisplay];
+}
+
 #define ARRSIZE(a)      (sizeof(a) / sizeof(a[0]))
 
 // Only override drawRect: if you perform custom drawing.
@@ -41,62 +58,55 @@
 - (void) drawRect: (CGRect) rect
 {
     NSLog(@"drawRect: %@", NSStringFromCGRect(rect));
-    
+
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetRGBFillColor(context, 1.0, 1.0, 1.0, 1.0);
     CGContextFillRect(context, rect);
 
-    if (book)
+    if (! book)
+        return;
+
+    if (! textAttributes)
     {
-        if (! textAttributes)
-        {
-            NSLog(@"Preparing text attributes");
-            CTFontRef font = CTFontCreateWithName(CFSTR("FZKai-Z03"), 24.0, NULL);
-            CGFloat paragraphSpacing = 0.0;
-            CGFloat lineSpacing = 3.0;
-            CTParagraphStyleSetting settings[] = {
-                { kCTParagraphStyleSpecifierParagraphSpacing, sizeof(CGFloat), &paragraphSpacing },
-                { kCTParagraphStyleSpecifierLineSpacing, sizeof(CGFloat), &lineSpacing },
-            };
-            CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(settings, ARRSIZE(settings));
-            textAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
-                              (id) font, (NSString *) kCTFontAttributeName, 
-                              (id) paragraphStyle, (NSString *) kCTParagraphStyleAttributeName, nil];
-            CFRelease(font);
-        }
-
-        NSUInteger start = rect.origin.y / kPageHeight;
-        NSUInteger end = (rect.origin.y + rect.size.height) / kPageHeight;
-        CGRect pageFrame = rect;
-        pageFrame.size.height = kPageHeight;
-        
-        CGContextSetTextMatrix(context, CGAffineTransformIdentity);
-
-        for (NSUInteger i = start; i <= end;
-             i++, pageFrame.origin.y += pageFrame.size.height)
-        {
-            JJPage *page = [book loadPage: i
-                           withAttributes: textAttributes
-                                    frame: pageFrame];
-            if (! page)
-                break;
-
-            NSLog(@"Start drawing page %d", i);
-
-            CGContextSaveGState(context);
-            CGContextConcatCTM(context, CGAffineTransformMakeScale(1, -1));
-            CGContextConcatCTM(context, CGAffineTransformMakeTranslation(0, -(pageFrame.origin.y * 2 + pageFrame.size.height)));
-            CTFrameDraw(page.textFrame, context);
-            CGContextRestoreGState(context);
-        }
+        NSLog(@"Preparing text attributes");
+        CTFontRef font = CTFontCreateWithName(CFSTR("FZKai-Z03"), 24.0, NULL);
+        CGFloat paragraphSpacing = 0.0;
+        CGFloat lineSpacing = 4.0;
+        CTParagraphStyleSetting settings[] = {
+            { kCTParagraphStyleSpecifierParagraphSpacing, sizeof(CGFloat), &paragraphSpacing },
+            { kCTParagraphStyleSpecifierLineSpacing, sizeof(CGFloat), &lineSpacing },
+        };
+        CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(settings, ARRSIZE(settings));
+        textAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          (id) font, (NSString *) kCTFontAttributeName,
+                          (id) paragraphStyle, (NSString *) kCTParagraphStyleAttributeName, nil];
+        CFRelease(font);
     }
+
+    CGSize inset = CGSizeMake(50, 20);
+    CGRect pageFrame = CGRectMake(inset.width, inset.height,
+                                  rect.size.width - 2 * inset.width,
+                                  rect.size.height - 2 * inset.height);
+
+    CGContextSetTextMatrix(context, CGAffineTransformIdentity);
+
+    JJPage *page = [book loadPage: currentPage
+                   withAttributes: textAttributes
+                            frame: pageFrame];
+    if (! page)
+        return;
+
+    NSLog(@"Start drawing page %d", 0);
+
+    CGContextSaveGState(context);
+    CGContextConcatCTM(context, CGAffineTransformMakeScale(1, -1));
+    CGContextConcatCTM(context, CGAffineTransformMakeTranslation(0, -(pageFrame.origin.y * 2 + pageFrame.size.height)));
+    CTFrameDraw(page.textFrame, context);
+    CGContextRestoreGState(context);
 }
 
 - (void) dealloc
 {
-    if (framesetter)
-        CFRelease(framesetter);
-    
     [book release];
 
     [textAttributes release];

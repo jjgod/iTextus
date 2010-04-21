@@ -14,12 +14,10 @@
     CTFramesetterRef framesetter;
     JJBook *book;
     NSDictionary *textAttributes;
+    NSUInteger currentPage;
 }
 
 @property (retain) JJBook *book;
-
-- (id) initWithFrame: (CGRect) frame
-                book: (JJBook *) theBook;
 - (CGSize) sizeForRenderingAtPoint: (CGPoint) point;
 
 @end

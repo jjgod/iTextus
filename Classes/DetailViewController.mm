@@ -12,20 +12,7 @@
 
 @implementation DetailViewController
 
-@synthesize navigationBar, popoverController, detailItem, scrollView, textView;
-
-#pragma mark -
-#pragma mark Scroll view delegation handling
-
-- (void) scrollViewDidEndDecelerating: (UIScrollView *) theScrollView
-{
-    CGPoint newOrigin = theScrollView.contentOffset;
-    NSLog(@"scrollViewDidEndDecelerating: %@", NSStringFromCGPoint(newOrigin));
-    CGSize newSize = [textView sizeForRenderingAtPoint: newOrigin];
-    [scrollView setContentSize: newSize];
-    [textView setNeedsDisplayInRect:
-        CGRectMake(0, newOrigin.y, newSize.width, newSize.height - newOrigin.y)];
-}
+@synthesize navigationBar, popoverController, detailItem, textView;
 
 #pragma mark -
 #pragma mark Managing the popover controller
@@ -40,19 +27,12 @@
 
         // Update the view.
         navigationBar.topItem.title = [detailItem description];
-        for (UIView *subview in scrollView.subviews)
-            [subview removeFromSuperview];
-        [scrollView setContentOffset: CGPointMake(0, 0)];
-        CGRect frame = self.view.bounds;
-        NSLog(@"creating a view in frame: %@", NSStringFromCGRect(frame));
-        JJTextView *view = [[JJTextView alloc] initWithFrame: frame
-                                                        book: detailItem];
-        [view setContentMode: UIViewContentModeTopLeft];
-        [scrollView addSubview: view];
-        [scrollView setContentSize: [view sizeForRenderingAtPoint: CGPointMake(0, 0)]];
-        self.textView = view;
-        [view release];
-        [self.view setNeedsDisplay];
+
+        [textView setBook: detailItem];
+        [textView setContentMode: UIViewContentModeTopLeft];
+        [textView setNeedsDisplay];
+
+        [self.navigationController setNavigationBarHidden: YES animated: YES];
     }
 
     if (popoverController != nil) {

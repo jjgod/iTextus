@@ -102,7 +102,7 @@
             NSLog(@"Failed to load");
             return nil;
         }
-        
+
         // Convert DOS line endings with UNIX line endings
         text = [text stringByReplacingOccurrencesOfString:@"\r\n" withString:@"\n"];
         contents = CFAttributedStringCreate(0, (CFStringRef) text, (CFDictionaryRef) attributes);
@@ -116,12 +116,14 @@
 
     if (lastPage)
         range.location = lastPage.textRange.location + lastPage.textRange.length;
-    
+
     if (range.location + range.length > length)
         range.length = length - range.location;
 
+    NSLog(@"%d pages", [pages count]);
+
     for (; [pages count] <= pageNum && range.location < length;
-         range.location += page.textRange.length, frame.origin.y += frame.size.height)
+         range.location += page.textRange.length)
     {
         range.length = (length - range.location) > kCharsPerPage ? kCharsPerPage : length - range.location;
         page = [[JJPage alloc] initWithContents: contents

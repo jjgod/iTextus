@@ -38,7 +38,7 @@
 - (void) loadBooks
 {
 #if TARGET_IPHONE_SIMULATOR
-    NSString *documentsDirectory = @"/Users/jjgod/Downloads/Novels";
+    NSString *documentsDirectory = @"/Users/jjgod/Downloads/Downloads/Novels";
 #else
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex: 0];
@@ -50,7 +50,7 @@
     self.title = [documentsDirectory lastPathComponent];
 
     while (file = [dirEnum nextObject]) {
-        NSLog(@"%@", file);
+        // NSLog(@"%@", file);
         if ([[file pathExtension] isEqualToString: @"txt"]) {
             JJBook *book = [[JJBook alloc] initWithPath: [documentsDirectory stringByAppendingPathComponent: file]];
             [books addObject: book];

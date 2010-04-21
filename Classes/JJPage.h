@@ -12,7 +12,6 @@
 @interface JJPage : NSObject {
     CGRect frame;
     CFRange textRange;
-    CTFramesetterRef framesetter;
     CTFrameRef textFrame;
 }
 

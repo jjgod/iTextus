@@ -20,7 +20,7 @@
         NSLog(@"Creating page with range: %d, %d", initialRange.location, initialRange.length);
         CFAttributedStringRef substring = CFAttributedStringCreateWithSubstring(0, contents, initialRange);
 
-        framesetter = CTFramesetterCreateWithAttributedString(substring);
+        CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString(substring);
         CFRelease(substring);
 
         frame = theFrame;
@@ -34,6 +34,8 @@
             // NSLog(@"textRange: %d, %d", textRange.location, textRange.length);
             textRange.location = initialRange.location;
         }
+
+        CFRelease(framesetter);
     }
     return self;
 }
@@ -42,7 +44,6 @@
 {
     if (textFrame)
         CFRelease(textFrame);
-    CFRelease(framesetter);
     [super dealloc];
 }
 

@@ -18,15 +18,13 @@
     UINavigationBar *navigationBar;
 
     JJBook *detailItem;
-    UIScrollView *scrollView;
     JJTextView *textView;
 }
 
 @property (nonatomic, retain) UIPopoverController *popoverController;
 @property (nonatomic, retain) IBOutlet UINavigationBar *navigationBar;
-@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 
 @property (nonatomic, retain) JJBook *detailItem;
-@property (nonatomic, retain) JJTextView *textView;
+@property (nonatomic, retain) IBOutlet JJTextView *textView;
 
 @end
