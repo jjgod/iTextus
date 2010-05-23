@@ -10,14 +10,19 @@
 #import <CoreText/CoreText.h>
 #import "JJBook.h"
 
+@class DetailViewController;
+
 @interface JJTextView : UIView {
     CTFramesetterRef framesetter;
     JJBook *book;
     NSDictionary *textAttributes;
     NSUInteger currentPage;
+    DetailViewController *controller;
 }
 
 @property (retain) JJBook *book;
+@property (assign) DetailViewController *controller;
+
 - (CGSize) sizeForRenderingAtPoint: (CGPoint) point;
 
 @end

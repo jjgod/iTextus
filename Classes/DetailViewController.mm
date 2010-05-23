@@ -25,14 +25,14 @@
         [detailItem release];
         detailItem = [newDetailItem retain];
 
+        [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackTranslucent];
         // Update the view.
         navigationBar.topItem.title = [detailItem description];
 
+        [textView setController: self];
         [textView setBook: detailItem];
         [textView setContentMode: UIViewContentModeTopLeft];
         [textView setNeedsDisplay];
-
-        [self.navigationController setNavigationBarHidden: YES animated: YES];
     }
 
     if (popoverController != nil) {
@@ -40,6 +40,27 @@
     }
 }
 
+- (void) hideAll
+{
+    [[UIApplication sharedApplication] setStatusBarHidden: YES
+                                            withAnimation: UIStatusBarAnimationFade];
+    [navigationBar setHidden: YES];
+}
+
+- (void) toggleAll
+{
+    if ([[UIApplication sharedApplication] isStatusBarHidden])
+        [self showAll];
+    else
+        [self hideAll];
+}
+
+- (void) showAll
+{
+    [[UIApplication sharedApplication] setStatusBarHidden: NO
+                                            withAnimation: UIStatusBarAnimationFade];
+    [navigationBar setHidden: NO];
+}
 
 #pragma mark -
 #pragma mark Split view support
@@ -53,7 +74,6 @@
 
 // Called when the view is shown again in the split view, invalidating the button and popover controller.
 - (void)splitViewController: (UISplitViewController*)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem {
-
     [navigationBar.topItem setLeftBarButtonItem:nil animated:YES];
     self.popoverController = nil;
 }

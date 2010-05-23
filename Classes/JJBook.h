@@ -15,6 +15,8 @@
     NSString *author;
     CFAttributedStringRef contents;
     NSMutableArray *pages;
+    NSUInteger estimatedPages;
+    NSUInteger totalCharacters;
 }
 
 - (NSString *) description;
@@ -24,5 +26,6 @@
 
 @property (retain) NSString *path, *title, *author;
 @property (retain) NSMutableArray *pages;
+@property (readonly) NSUInteger estimatedPages;
 
 @end

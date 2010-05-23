@@ -109,7 +109,6 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
 	static NSString *CellIdentifier = @"CellIdentifier";
 
 	// Dequeue or create a cell of the appropriate type.

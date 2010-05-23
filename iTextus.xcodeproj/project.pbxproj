@@ -531,10 +531,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iTextus_Prefix.pch;
 				INFOPLIST_FILE = "iTextus-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SDKROOT)/usr/lib/gcc/powerpc-apple-darwin9/4.0.1\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = iTextus;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -549,10 +546,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iTextus_Prefix.pch;
 				INFOPLIST_FILE = "iTextus-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SDKROOT)/usr/lib/gcc/powerpc-apple-darwin9/4.0.1\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = iTextus;
 				TARGETED_DEVICE_FAMILY = 2;

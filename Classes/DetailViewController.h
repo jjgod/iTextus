@@ -27,4 +27,8 @@
 @property (nonatomic, retain) JJBook *detailItem;
 @property (nonatomic, retain) IBOutlet JJTextView *textView;
 
+- (void) hideAll;
+- (void) showAll;
+- (void) toggleAll;
+
 @end

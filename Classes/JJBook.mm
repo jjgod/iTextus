@@ -63,7 +63,7 @@
 
 @implementation JJBook
 
-@synthesize path, title, author, pages;
+@synthesize path, title, author, pages, estimatedPages;
 
 - (id) initWithPath: (NSString *) thePath
 {
@@ -73,6 +73,7 @@
         author = nil;
         pages = nil;
         contents = NULL;
+        estimatedPages = totalCharacters = 0;
     }
     return self;
 }
@@ -129,12 +130,15 @@
         page = [[JJPage alloc] initWithContents: contents
                                         atRange: range
                                         inFrame: frame];
+        totalCharacters += page.textRange.length;
         [pages addObject: page];
         [page release];
         NSLog(@"%d pages created, range = %d, %d.", [pages count], page.textRange.location, page.textRange.length);
     }
 
-    return [pages objectAtIndex: pageNum];
+    estimatedPages = totalCharacters < length ? length / (totalCharacters / pages.count)
+                                              : pages.count;
+    return pageNum < pages.count ? [pages objectAtIndex: pageNum] : nil;
 }
 
 - (void) dealloc

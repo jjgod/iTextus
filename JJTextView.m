@@ -7,8 +7,11 @@
 //
 
 #import "JJTextView.h"
+#import "DetailViewController.h"
 
 @implementation JJTextView
+
+@synthesize controller;
 
 - (id) initWithFrame:(CGRect)frame
 {
@@ -45,10 +48,32 @@
     return frame.size;
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+- (void) touchesEnded: (NSSet *) touches
+            withEvent: (UIEvent *) event
 {
-    currentPage += 1;
-    [self setNeedsDisplay];
+    for (UITouch *touch in touches)
+    {
+        CGPoint location = [touch locationInView: self];
+        if (location.y < 256)
+        {
+            if (currentPage > 0)
+            {
+                currentPage -= 1;
+                [controller hideAll];
+                [self setNeedsDisplay];
+            }
+        }
+        else if (location.y > 768)
+        {
+            currentPage += 1;
+            [controller hideAll];
+            [self setNeedsDisplay];
+        }
+        else
+            [controller toggleAll];
+
+        NSLog(@"touched: %g, %g", location.x, location.y);
+    }
 }
 
 #define ARRSIZE(a)      (sizeof(a) / sizeof(a[0]))
@@ -60,7 +85,7 @@
     NSLog(@"drawRect: %@", NSStringFromCGRect(rect));
 
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetRGBFillColor(context, 1.0, 1.0, 1.0, 1.0);
+    CGContextSetRGBFillColor(context, 1.0, 1.0, 0.85, 1.0);
     CGContextFillRect(context, rect);
 
     if (! book)
@@ -93,16 +118,27 @@
     JJPage *page = [book loadPage: currentPage
                    withAttributes: textAttributes
                             frame: pageFrame];
-    if (! page)
-        return;
+    if (page)
+    {
+        NSLog(@"Start drawing page %d", currentPage);
 
-    NSLog(@"Start drawing page %d", 0);
+        CGContextSaveGState(context);
+        CGContextConcatCTM(context, CGAffineTransformMakeScale(1, -1));
+        CGContextConcatCTM(context, CGAffineTransformMakeTranslation(0, -(pageFrame.origin.y * 2 + pageFrame.size.height)));
+        CTFrameDraw(page.textFrame, context);
+        CGContextRestoreGState(context);
+    } else {
+        currentPage = book.pages.count - 1;
+    }
 
-    CGContextSaveGState(context);
-    CGContextConcatCTM(context, CGAffineTransformMakeScale(1, -1));
-    CGContextConcatCTM(context, CGAffineTransformMakeTranslation(0, -(pageFrame.origin.y * 2 + pageFrame.size.height)));
-    CTFrameDraw(page.textFrame, context);
-    CGContextRestoreGState(context);
+    NSLog(@"estimatedPages = %d, pages = %d", book.estimatedPages, book.pages.count);
+    CGFloat seenWidth = rect.size.width * (currentPage + 1) / book.estimatedPages;
+
+    CGContextSetRGBFillColor(context, 0.7, 0.7, 0.7, 1.0);
+    CGContextFillRect(context, CGRectMake(0, rect.size.height - 5, seenWidth, 5));
+
+    CGContextSetRGBFillColor(context, 0.3, 0.3, 0.3, 1.0);
+    CGContextFillRect(context, CGRectMake(seenWidth, rect.size.height - 5, rect.size.width - seenWidth, 5));
 }
 
 - (void) dealloc
