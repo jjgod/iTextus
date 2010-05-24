@@ -35,7 +35,7 @@
 #pragma mark -
 #pragma mark View lifecycle
 
-- (void) loadBooks
+- (NSString *) documentsDirectory
 {
 #if TARGET_IPHONE_SIMULATOR
     NSString *documentsDirectory = @"/Users/jjgod/Downloads/Downloads/Novels";
@@ -43,11 +43,20 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex: 0];
 #endif
+
+    return documentsDirectory;
+}
+
+- (void) loadBooks
+{
+    NSString *documentsDirectory = [self documentsDirectory];
     NSString *file;
     NSDirectoryEnumerator *dirEnum = [[NSFileManager defaultManager] enumeratorAtPath: documentsDirectory];
 
-    books = [[NSMutableArray alloc] initWithCapacity: 100];
-    self.title = [documentsDirectory lastPathComponent];
+    if (! books)
+        books = [[NSMutableArray alloc] initWithCapacity: 100];
+    else
+        [books removeAllObjects];
 
     while (file = [dirEnum nextObject]) {
         // NSLog(@"%@", file);
@@ -62,7 +71,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.title = [self.documentsDirectory lastPathComponent];
     [self loadBooks];
 }
 

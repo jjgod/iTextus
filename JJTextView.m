@@ -17,7 +17,6 @@
 {
     if (self = [super initWithFrame:frame])
     {
-        currentPage = 0;
     }
 
     return self;
@@ -34,7 +33,6 @@
         [book release];
 
     book = [theBook retain];
-    currentPage = 0;
 }
 
 #define kPageHeight     400
@@ -56,16 +54,16 @@
         CGPoint location = [touch locationInView: self];
         if (location.y < 256)
         {
-            if (currentPage > 0)
+            if (book.lastReadPage > 0)
             {
-                currentPage -= 1;
+                book.lastReadPage -= 1;
                 [controller hideAll];
                 [self setNeedsDisplay];
             }
         }
         else if (location.y > 768)
         {
-            currentPage += 1;
+            book.lastReadPage += 1;
             [controller hideAll];
             [self setNeedsDisplay];
         }
@@ -115,12 +113,12 @@
 
     CGContextSetTextMatrix(context, CGAffineTransformIdentity);
 
-    JJPage *page = [book loadPage: currentPage
+    JJPage *page = [book loadPage: book.lastReadPage
                    withAttributes: textAttributes
                             frame: pageFrame];
     if (page)
     {
-        NSLog(@"Start drawing page %d", currentPage);
+        NSLog(@"Start drawing page %d", book.lastReadPage);
 
         CGContextSaveGState(context);
         CGContextConcatCTM(context, CGAffineTransformMakeScale(1, -1));
@@ -128,11 +126,11 @@
         CTFrameDraw(page.textFrame, context);
         CGContextRestoreGState(context);
     } else {
-        currentPage = book.pages.count - 1;
+        book.lastReadPage = book.pages.count - 1;
     }
 
     NSLog(@"estimatedPages = %d, pages = %d", book.estimatedPages, book.pages.count);
-    CGFloat seenWidth = rect.size.width * (currentPage + 1) / book.estimatedPages;
+    CGFloat seenWidth = rect.size.width * (book.lastReadPage + 1) / book.estimatedPages;
 
     CGContextSetRGBFillColor(context, 0.7, 0.7, 0.7, 1.0);
     CGContextFillRect(context, CGRectMake(0, rect.size.height - 5, seenWidth, 5));

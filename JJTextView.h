@@ -16,7 +16,6 @@
     CTFramesetterRef framesetter;
     JJBook *book;
     NSDictionary *textAttributes;
-    NSUInteger currentPage;
     DetailViewController *controller;
 }
 

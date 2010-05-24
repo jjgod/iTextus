@@ -10,6 +10,9 @@
 #import "JJBook.h"
 #import "JJLine.h"
 #import <chardetect.h>
+#include <sys/xattr.h>
+
+#define kLastReadPages @"lastReadPages"
 
 @interface NSString (DetectEncoding)
 - (NSStringEncoding) detectedEncodingAtPath;
@@ -73,9 +76,32 @@
         author = nil;
         pages = nil;
         contents = NULL;
-        estimatedPages = totalCharacters = 0;
+        estimatedPages = totalCharacters = lastReadPage = 0;
+        lastReadPage = [self lastReadPageForPath: thePath];
     }
     return self;
+}
+
+- (NSUInteger) lastReadPageForPath: (NSString *) thePath
+{
+    NSUInteger num;
+    if (getxattr([self.path fileSystemRepresentation],
+                 "lastReadPage", &num, sizeof(num), 0, 0) == sizeof(num))
+        return num;
+    else
+        return 0;
+}
+
+- (NSUInteger) lastReadPage
+{
+    return lastReadPage;
+}
+
+- (void) setLastReadPage: (NSUInteger) num
+{
+    lastReadPage = num;
+    setxattr([self.path fileSystemRepresentation],
+             "lastReadPage", &num, sizeof(num), 0, 0);
 }
 
 - (NSString *) description

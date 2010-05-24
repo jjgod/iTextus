@@ -15,6 +15,7 @@
     NSString *author;
     CFAttributedStringRef contents;
     NSMutableArray *pages;
+    NSUInteger lastReadPage;
     NSUInteger estimatedPages;
     NSUInteger totalCharacters;
 }
@@ -23,6 +24,9 @@
 - (JJPage *) loadPage: (NSUInteger) pageNum
        withAttributes: (NSDictionary *) attributes
                 frame: (CGRect) frame;
+- (NSUInteger) lastReadPageForPath: (NSString *) thePath;
+- (NSUInteger) lastReadPage;
+- (void) setLastReadPage: (NSUInteger) num;
 
 @property (retain) NSString *path, *title, *author;
 @property (retain) NSMutableArray *pages;

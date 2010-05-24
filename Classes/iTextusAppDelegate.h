@@ -8,16 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-
 @class MasterViewController;
 @class DetailViewController;
 
 @interface iTextusAppDelegate : NSObject <UIApplicationDelegate> {
-    
     UIWindow *window;
-    
+
     UISplitViewController *splitViewController;
-    
+
     MasterViewController *masterViewController;
     DetailViewController *detailViewController;
 }
