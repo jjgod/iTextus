@@ -13,16 +13,15 @@
 @class JJTextView;
 
 @interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate> {
-
     UIPopoverController *popoverController;
-    UINavigationBar *navigationBar;
+    UIToolbar *toolbar;
 
     JJBook *detailItem;
     JJTextView *textView;
 }
 
 @property (nonatomic, retain) UIPopoverController *popoverController;
-@property (nonatomic, retain) IBOutlet UINavigationBar *navigationBar;
+@property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
 
 @property (nonatomic, retain) JJBook *detailItem;
 @property (nonatomic, retain) IBOutlet JJTextView *textView;

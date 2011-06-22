@@ -12,7 +12,7 @@
 
 @implementation DetailViewController
 
-@synthesize navigationBar, popoverController, detailItem, textView;
+@synthesize toolbar, popoverController, detailItem, textView;
 
 #pragma mark -
 #pragma mark Managing the popover controller
@@ -27,10 +27,9 @@
 
         [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackTranslucent];
         // Update the view.
-        navigationBar.topItem.title = [detailItem description];
+        // navigationBar.topItem.title = [detailItem description];
 
         [textView setController: self];
-        [textView setBook: detailItem];
         [textView setContentMode: UIViewContentModeTopLeft];
         [textView setNeedsDisplay];
     }
@@ -44,7 +43,7 @@
 {
     [[UIApplication sharedApplication] setStatusBarHidden: YES
                                             withAnimation: UIStatusBarAnimationFade];
-    [navigationBar setHidden: YES];
+    [toolbar setHidden: YES];
 }
 
 - (void) toggleAll
@@ -59,22 +58,35 @@
 {
     [[UIApplication sharedApplication] setStatusBarHidden: NO
                                             withAnimation: UIStatusBarAnimationFade];
-    [navigationBar setHidden: NO];
+    [toolbar setHidden: NO];
 }
 
 #pragma mark -
 #pragma mark Split view support
 
-- (void)splitViewController: (UISplitViewController*)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem*)barButtonItem forPopoverController: (UIPopoverController*)pc {
+- (void) splitViewController: (UISplitViewController*) svc
+      willHideViewController: (UIViewController *) aViewController
+           withBarButtonItem: (UIBarButtonItem *) barButtonItem
+        forPopoverController: (UIPopoverController *) pc
+{
     barButtonItem.title = aViewController.title;
-    [navigationBar.topItem setLeftBarButtonItem:barButtonItem animated:YES];
+    NSMutableArray *items = [[toolbar items] mutableCopy];
+    [items insertObject:barButtonItem atIndex:0];
+    [toolbar setItems:items animated:YES];
+    [items release];
     self.popoverController = pc;
 }
 
 
 // Called when the view is shown again in the split view, invalidating the button and popover controller.
-- (void)splitViewController: (UISplitViewController*)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem {
-    [navigationBar.topItem setLeftBarButtonItem:nil animated:YES];
+- (void) splitViewController: (UISplitViewController *) svc
+      willShowViewController: (UIViewController *) aViewController
+   invalidatingBarButtonItem: (UIBarButtonItem *) barButtonItem
+{
+    NSMutableArray *items = [[toolbar items] mutableCopy];
+    [items removeObjectAtIndex:0];
+    [toolbar setItems:items animated:YES];
+    [items release];
     self.popoverController = nil;
 }
 
@@ -85,6 +97,12 @@
 // Ensure that the view controller supports rotation and that the split view can therefore show in both portrait and landscape.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    NSLog(@"didRotateFromInterfaceOrientation: %d", fromInterfaceOrientation);
+    [self.view setNeedsDisplay];
 }
 
 
@@ -132,10 +150,9 @@
 */
 
 - (void)dealloc {
+    [toolbar release];
     [textView release];
     [popoverController release];
-    [navigationBar release];
-
     [detailItem release];
     [super dealloc];
 }

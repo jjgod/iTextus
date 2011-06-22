@@ -46,9 +46,13 @@
     // Save data if appropriate
 }
 
-
 #pragma mark -
 #pragma mark Memory management
+
+- (void) applicationDidReceiveMemoryWarning: (UIApplication *) application
+{
+    [masterViewController releaseAllPages];
+}
 
 - (void)dealloc {
     [splitViewController release];

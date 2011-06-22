@@ -17,7 +17,7 @@
                 inFrame: (CGRect) theFrame
 {
     if (self = [super init]) {
-        NSLog(@"Creating page with range: %d, %d", initialRange.location, initialRange.length);
+        // NSLog(@"Creating page with range: %d, %d", initialRange.location, initialRange.length);
         CFAttributedStringRef substring = CFAttributedStringCreateWithSubstring(0, contents, initialRange);
 
         CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString(substring);

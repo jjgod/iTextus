@@ -20,6 +20,7 @@
     NSUInteger totalCharacters;
 }
 
+- (id) initWithPath: (NSString *) thePath;
 - (NSString *) description;
 - (JJPage *) loadPage: (NSUInteger) pageNum
        withAttributes: (NSDictionary *) attributes
@@ -27,6 +28,7 @@
 - (NSUInteger) lastReadPageForPath: (NSString *) thePath;
 - (NSUInteger) lastReadPage;
 - (void) setLastReadPage: (NSUInteger) num;
+- (void) releaseAllPages;
 
 @property (retain) NSString *path, *title, *author;
 @property (retain) NSMutableArray *pages;

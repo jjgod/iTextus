@@ -17,4 +17,6 @@
 
 @property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
 
+- (void) releaseAllPages;
+
 @end

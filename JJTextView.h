@@ -8,18 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreText/CoreText.h>
-#import "JJBook.h"
 
 @class DetailViewController;
 
 @interface JJTextView : UIView {
     CTFramesetterRef framesetter;
-    JJBook *book;
     NSDictionary *textAttributes;
     DetailViewController *controller;
 }
 
-@property (retain) JJBook *book;
 @property (assign) DetailViewController *controller;
 
 - (CGSize) sizeForRenderingAtPoint: (CGPoint) point;

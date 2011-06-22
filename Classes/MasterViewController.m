@@ -144,6 +144,13 @@
 #pragma mark -
 #pragma mark Memory management
 
+- (void) releaseAllPages
+{
+    for (JJBook *book in books)
+        if (! [book isEqual: detailViewController.detailItem])
+            [book releaseAllPages];
+}
+
 - (void)dealloc {
     [books release];
     [detailViewController release];

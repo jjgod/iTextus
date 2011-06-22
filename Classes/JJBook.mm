@@ -116,7 +116,7 @@
        withAttributes: (NSDictionary *) attributes
                 frame: (CGRect) frame
 {
-    NSLog(@"Loading page %d from book %@", pageNum, self.path);
+    // NSLog(@"Loading page %d from book %@", pageNum, self.path);
     if (! contents)
     {
         NSStringEncoding encoding = [self.path detectedEncodingAtPath];
@@ -147,7 +147,7 @@
     if (range.location + range.length > length)
         range.length = length - range.location;
 
-    NSLog(@"%d pages", [pages count]);
+    // NSLog(@"%d pages", [pages count]);
 
     for (; [pages count] <= pageNum && range.location < length;
          range.location += page.textRange.length)
@@ -159,12 +159,20 @@
         totalCharacters += page.textRange.length;
         [pages addObject: page];
         [page release];
-        NSLog(@"%d pages created, range = %d, %d.", [pages count], page.textRange.location, page.textRange.length);
+        // NSLog(@"%d pages created, range = %d, %d.", [pages count], page.textRange.location, page.textRange.length);
     }
 
     estimatedPages = totalCharacters < length ? length / (totalCharacters / pages.count)
                                               : pages.count;
     return pageNum < pages.count ? [pages objectAtIndex: pageNum] : nil;
+}
+
+- (void) releaseAllPages
+{
+    if (contents)
+        CFRelease(contents);
+    contents = NULL;
+    [pages removeAllObjects];
 }
 
 - (void) dealloc

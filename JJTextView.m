@@ -13,28 +13,6 @@
 
 @synthesize controller;
 
-- (id) initWithFrame:(CGRect)frame
-{
-    if (self = [super initWithFrame:frame])
-    {
-    }
-
-    return self;
-}
-
-- (JJBook *) book
-{
-    return book;
-}
-
-- (void) setBook:(JJBook *)theBook
-{
-    if (book)
-        [book release];
-
-    book = [theBook retain];
-}
-
 #define kPageHeight     400
 
 - (CGSize) sizeForRenderingAtPoint: (CGPoint) point
@@ -49,6 +27,8 @@
 - (void) touchesEnded: (NSSet *) touches
             withEvent: (UIEvent *) event
 {
+    JJBook *book = controller.detailItem;
+
     for (UITouch *touch in touches)
     {
         CGPoint location = [touch locationInView: self];
@@ -70,7 +50,7 @@
         else
             [controller toggleAll];
 
-        NSLog(@"touched: %g, %g", location.x, location.y);
+        // NSLog(@"touched: %g, %g", location.x, location.y);
     }
 }
 
@@ -80,11 +60,17 @@
 // An empty implementation adversely affects performance during animation.
 - (void) drawRect: (CGRect) rect
 {
-    NSLog(@"drawRect: %@", NSStringFromCGRect(rect));
+    JJBook *book = controller.detailItem;
+
+    // NSLog(@"drawRect: %@", NSStringFromCGRect(rect));
 
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetRGBFillColor(context, 1.0, 1.0, 0.85, 1.0);
     CGContextFillRect(context, rect);
+    CGContextSetAllowsFontSmoothing(context, true);
+    CGContextSetAllowsFontSubpixelPositioning(context, true);
+    CGContextSetShouldSmoothFonts(context, true);
+    CGContextSetShouldSubpixelPositionFonts(context, true);
 
     if (! book)
         return;
@@ -92,7 +78,7 @@
     if (! textAttributes)
     {
         NSLog(@"Preparing text attributes");
-        CTFontRef font = CTFontCreateWithName(CFSTR("FZKai-Z03"), 24.0, NULL);
+        CTFontRef font = CTFontCreateWithName(CFSTR("FZKai-Z03"), 26.0, NULL);
         CGFloat paragraphSpacing = 0.0;
         CGFloat lineSpacing = 4.0;
         CTParagraphStyleSetting settings[] = {
@@ -113,12 +99,15 @@
 
     CGContextSetTextMatrix(context, CGAffineTransformIdentity);
 
+    NSDate *currentTime = [NSDate date];
     JJPage *page = [book loadPage: book.lastReadPage
                    withAttributes: textAttributes
                             frame: pageFrame];
+    NSTimeInterval interval = -[currentTime timeIntervalSinceNow];
+    
     if (page)
     {
-        NSLog(@"Start drawing page %d", book.lastReadPage);
+        // NSLog(@"Start drawing page %d", book.lastReadPage);
 
         CGContextSaveGState(context);
         CGContextConcatCTM(context, CGAffineTransformMakeScale(1, -1));
@@ -129,7 +118,9 @@
         book.lastReadPage = book.pages.count - 1;
     }
 
-    NSLog(@"estimatedPages = %d, pages = %d", book.estimatedPages, book.pages.count);
+    NSLog(@"used %g secs", interval);
+
+    // NSLog(@"estimatedPages = %d, pages = %d", book.estimatedPages, book.pages.count);
     CGFloat seenWidth = rect.size.width * (book.lastReadPage + 1) / book.estimatedPages;
 
     CGContextSetRGBFillColor(context, 0.7, 0.7, 0.7, 1.0);
@@ -141,8 +132,6 @@
 
 - (void) dealloc
 {
-    [book release];
-
     [textAttributes release];
     [super dealloc];
 }
