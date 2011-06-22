@@ -13,7 +13,7 @@
 @implementation MasterViewController
 
 @synthesize detailViewController;
-
+@synthesize books;
 
 #pragma mark -
 #pragma mark Rotation support

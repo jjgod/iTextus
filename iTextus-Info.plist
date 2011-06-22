@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIFileSharingEnabled</key>
-	<true/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>fzkaigbk.ttf</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
@@ -16,6 +10,10 @@
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Stormtrooper.png</string>
+	</array>
 	<key>CFBundleIdentifier</key>
 	<string>org.jjgod.itextus</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -32,5 +30,17 @@
 	<true/>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>fzkaigbk.ttf</string>
+	</array>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UIPrerenderedIcon</key>
+	<true/>
 </dict>
 </plist>

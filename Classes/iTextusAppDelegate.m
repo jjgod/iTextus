@@ -38,6 +38,18 @@
     [window addSubview: splitViewController.view];
     [window makeKeyAndVisible];
 
+    NSMutableArray *books = masterViewController.books;
+    NSString *lastReadPath = [[NSUserDefaults standardUserDefaults] stringForKey: @"lastReadPath"];
+
+    if (lastReadPath && books && books.count) {
+        for (JJBook *book in books)
+            if ([book.path isEqualToString: lastReadPath])
+            {
+                [detailViewController setDetailItem: book];
+                break;
+            }
+    }
+
     return YES;
 }
 

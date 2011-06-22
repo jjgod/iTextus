@@ -25,10 +25,12 @@
         [detailItem release];
         detailItem = [newDetailItem retain];
 
-        [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackTranslucent];
+        // [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackTranslucent];
         // Update the view.
         // navigationBar.topItem.title = [detailItem description];
 
+        [[NSUserDefaults standardUserDefaults] setObject: detailItem.path
+                                                  forKey: @"lastReadPath"];
         [textView setController: self];
         [textView setContentMode: UIViewContentModeTopLeft];
         [textView setNeedsDisplay];

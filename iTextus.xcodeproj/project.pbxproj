@@ -41,6 +41,8 @@
 		072305FC1114084800F65F6B /* fzkaigbk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 072305FB1114084800F65F6B /* fzkaigbk.ttf */; };
 		072DDF16111495A1004DE037 /* JJLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 072DDF15111495A1004DE037 /* JJLine.m */; };
 		072DDF7211152EC6004DE037 /* JJPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 072DDF7111152EC6004DE037 /* JJPage.m */; };
+		0749A64113B2A2C800E9C225 /* Stormtrooper.png in Resources */ = {isa = PBXBuildFile; fileRef = 0749A64013B2A2C800E9C225 /* Stormtrooper.png */; };
+		0749A64613B2A54C00E9C225 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 0749A64513B2A54C00E9C225 /* Default-Portrait~ipad.png */; };
 		1D3623260D0F684500981E51 /* iTextusAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* iTextusAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -127,6 +129,8 @@
 		072DDF15111495A1004DE037 /* JJLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJLine.m; sourceTree = "<group>"; };
 		072DDF7011152EC6004DE037 /* JJPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJPage.h; sourceTree = "<group>"; };
 		072DDF7111152EC6004DE037 /* JJPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJPage.m; sourceTree = "<group>"; };
+		0749A64013B2A2C800E9C225 /* Stormtrooper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stormtrooper.png; sourceTree = "<group>"; };
+		0749A64513B2A54C00E9C225 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* iTextusAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTextusAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* iTextusAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTextusAppDelegate.m; sourceTree = "<group>"; };
@@ -294,6 +298,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				0749A64513B2A54C00E9C225 /* Default-Portrait~ipad.png */,
+				0749A64013B2A2C800E9C225 /* Stormtrooper.png */,
 				0723045C1113F07700F65F6B /* charset-detector */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -421,6 +427,8 @@
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				2804203C108E9BAB000629CD /* DetailView.xib in Resources */,
 				072305FC1114084800F65F6B /* fzkaigbk.ttf in Resources */,
+				0749A64113B2A2C800E9C225 /* Stormtrooper.png in Resources */,
+				0749A64613B2A54C00E9C225 /* Default-Portrait~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
