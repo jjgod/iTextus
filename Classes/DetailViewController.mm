@@ -44,7 +44,7 @@
 - (void) hideAll
 {
     [[UIApplication sharedApplication] setStatusBarHidden: YES
-                                            withAnimation: UIStatusBarAnimationFade];
+                                            withAnimation: UIStatusBarAnimationSlide];
     [toolbar setHidden: YES];
 }
 
@@ -59,7 +59,7 @@
 - (void) showAll
 {
     [[UIApplication sharedApplication] setStatusBarHidden: NO
-                                            withAnimation: UIStatusBarAnimationFade];
+                                            withAnimation: UIStatusBarAnimationSlide];
     [toolbar setHidden: NO];
 }
 
@@ -89,7 +89,7 @@
     [items removeObjectAtIndex:0];
     [toolbar setItems:items animated:YES];
     [items release];
-    self.popoverController = nil;
+    self.popoverController = nil;    
 }
 
 

@@ -18,6 +18,7 @@
 @property (nonatomic, retain) IBOutlet DetailViewController *detailViewController;
 @property (readonly) NSMutableArray *books;
 
+- (void) loadBooks;
 - (void) releaseAllPages;
 
 @end

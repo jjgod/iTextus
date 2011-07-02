@@ -65,7 +65,10 @@
     // NSLog(@"drawRect: %@", NSStringFromCGRect(rect));
 
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetRGBFillColor(context, 1.0, 1.0, 0.85, 1.0);
+    UIImage *tile = [UIImage imageNamed: @"brushed_alu.png"];
+    UIColor *color = [UIColor colorWithPatternImage: tile];
+    [color setFill];
+    // CGContextSetRGBFillColor(context, 1.0, 1.0, 0.85, 1.0);
     CGContextFillRect(context, rect);
     CGContextSetAllowsFontSmoothing(context, true);
     CGContextSetAllowsFontSubpixelPositioning(context, true);
@@ -79,8 +82,8 @@
     {
         NSLog(@"Preparing text attributes");
         CTFontRef font = CTFontCreateWithName(CFSTR("FZKai-Z03"), 26.0, NULL);
-        CGFloat paragraphSpacing = 0.0;
-        CGFloat lineSpacing = 4.0;
+        CGFloat paragraphSpacing = 4.0;
+        CGFloat lineSpacing = 8.0;
         CTParagraphStyleSetting settings[] = {
             { kCTParagraphStyleSpecifierParagraphSpacing, sizeof(CGFloat), &paragraphSpacing },
             { kCTParagraphStyleSpecifierLineSpacing, sizeof(CGFloat), &lineSpacing },

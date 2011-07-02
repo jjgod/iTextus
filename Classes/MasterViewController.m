@@ -77,14 +77,26 @@
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
+    [self loadBooks];
     [super viewWillAppear:animated];
-}
-*/
-/*
+}*/
+
 - (void)viewDidAppear:(BOOL)animated {
+    NSLog(@"view did appear");
+
+#if 0
+    if (svc.viewControllers.count) {
+        UINavigationController *navigationController = [svc.viewControllers objectAtIndex: 0];
+        if ([navigationController.topViewController respondsToSelector: @selector(loadBooks)]) {
+            MasterViewController *masterViewController = (MasterViewController *) navigationController.topViewController;
+            [masterViewController loadBooks];
+        }
+    }
+#endif
+
     [super viewDidAppear:animated];
 }
-*/
+
 /*
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
