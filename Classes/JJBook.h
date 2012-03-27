@@ -18,6 +18,7 @@
     NSUInteger lastReadPage;
     NSUInteger estimatedPages;
     NSUInteger totalCharacters;
+    CTLineRef titleLine;
 }
 
 - (id) initWithPath: (NSString *) thePath;
@@ -33,5 +34,6 @@
 @property (retain) NSString *path, *title, *author;
 @property (retain) NSMutableArray *pages;
 @property (readonly) NSUInteger estimatedPages;
+@property (readonly) CTLineRef titleLine;
 
 @end

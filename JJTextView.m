@@ -13,17 +13,6 @@
 
 @synthesize controller;
 
-#define kPageHeight     400
-
-- (CGSize) sizeForRenderingAtPoint: (CGPoint) point
-{
-    CGRect frame = self.frame;
-    // round to page height
-    frame.size.height = (point.y + frame.size.height + kPageHeight - 1) / kPageHeight * kPageHeight;
-    [self setFrame: frame];
-    return frame.size;
-}
-
 - (void) touchesEnded: (NSSet *) touches
             withEvent: (UIEvent *) event
 {
@@ -81,7 +70,7 @@
     if (! textAttributes)
     {
         NSLog(@"Preparing text attributes");
-        CTFontRef font = CTFontCreateWithName(CFSTR("FZKai-Z03"), 26.0, NULL);
+        CTFontRef font = CTFontCreateWithName(CFSTR("FZShuSong-Z01"), 24.0, NULL);
         CGFloat paragraphSpacing = 4.0;
         CGFloat lineSpacing = 8.0;
         CTParagraphStyleSetting settings[] = {
@@ -95,7 +84,7 @@
         CFRelease(font);
     }
 
-    CGSize inset = CGSizeMake(50, 20);
+    CGSize inset = CGSizeMake(70, 80);
     CGRect pageFrame = CGRectMake(inset.width, inset.height,
                                   rect.size.width - 2 * inset.width,
                                   rect.size.height - 2 * inset.height);
@@ -107,14 +96,17 @@
                    withAttributes: textAttributes
                             frame: pageFrame];
     NSTimeInterval interval = -[currentTime timeIntervalSinceNow];
-    
+
     if (page)
     {
         // NSLog(@"Start drawing page %d", book.lastReadPage);
 
         CGContextSaveGState(context);
         CGContextConcatCTM(context, CGAffineTransformMakeScale(1, -1));
-        CGContextConcatCTM(context, CGAffineTransformMakeTranslation(0, -(pageFrame.origin.y * 2 + pageFrame.size.height)));
+        CGContextConcatCTM(context, CGAffineTransformMakeTranslation(0, -(pageFrame.origin.y * 2 + 20 + pageFrame.size.height)));
+        CGRect lineBounds = CTLineGetImageBounds(book.titleLine, context);
+        CGContextSetTextPosition(context, (rect.size.width - lineBounds.size.width) / 2 - 10, pageFrame.origin.y + pageFrame.size.height + 35);
+        CTLineDraw(book.titleLine, context);
         CTFrameDraw(page.textFrame, context);
         CGContextRestoreGState(context);
     } else {

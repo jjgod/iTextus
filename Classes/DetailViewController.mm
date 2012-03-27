@@ -12,7 +12,7 @@
 
 @implementation DetailViewController
 
-@synthesize toolbar, popoverController, detailItem, textView;
+@synthesize popoverController, detailItem, textView;
 
 #pragma mark -
 #pragma mark Managing the popover controller
@@ -44,8 +44,7 @@
 - (void) hideAll
 {
     [[UIApplication sharedApplication] setStatusBarHidden: YES
-                                            withAnimation: UIStatusBarAnimationSlide];
-    [toolbar setHidden: YES];
+                                            withAnimation: UIStatusBarAnimationFade];
 }
 
 - (void) toggleAll
@@ -59,8 +58,7 @@
 - (void) showAll
 {
     [[UIApplication sharedApplication] setStatusBarHidden: NO
-                                            withAnimation: UIStatusBarAnimationSlide];
-    [toolbar setHidden: NO];
+                                            withAnimation: UIStatusBarAnimationFade];
 }
 
 #pragma mark -
@@ -71,11 +69,6 @@
            withBarButtonItem: (UIBarButtonItem *) barButtonItem
         forPopoverController: (UIPopoverController *) pc
 {
-    barButtonItem.title = aViewController.title;
-    NSMutableArray *items = [[toolbar items] mutableCopy];
-    [items insertObject:barButtonItem atIndex:0];
-    [toolbar setItems:items animated:YES];
-    [items release];
     self.popoverController = pc;
 }
 
@@ -85,10 +78,6 @@
       willShowViewController: (UIViewController *) aViewController
    invalidatingBarButtonItem: (UIBarButtonItem *) barButtonItem
 {
-    NSMutableArray *items = [[toolbar items] mutableCopy];
-    [items removeObjectAtIndex:0];
-    [toolbar setItems:items animated:YES];
-    [items release];
     self.popoverController = nil;    
 }
 
@@ -132,6 +121,9 @@
 }
 */
 
+- (void)viewDidLoad {
+}
+
 - (void)viewDidUnload {
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -152,7 +144,6 @@
 */
 
 - (void)dealloc {
-    [toolbar release];
     [textView release];
     [popoverController release];
     [detailItem release];

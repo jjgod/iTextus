@@ -12,13 +12,10 @@
 @class DetailViewController;
 
 @interface JJTextView : UIView {
-    CTFramesetterRef framesetter;
     NSDictionary *textAttributes;
     DetailViewController *controller;
 }
 
 @property (assign) DetailViewController *controller;
-
-- (CGSize) sizeForRenderingAtPoint: (CGPoint) point;
 
 @end

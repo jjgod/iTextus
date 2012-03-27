@@ -66,7 +66,7 @@
 
 @implementation JJBook
 
-@synthesize path, title, author, pages, estimatedPages;
+@synthesize path, title, author, pages, estimatedPages, titleLine;
 
 - (id) initWithPath: (NSString *) thePath
 {
@@ -116,6 +116,15 @@
        withAttributes: (NSDictionary *) attributes
                 frame: (CGRect) frame
 {
+    if (! titleLine) {
+        NSMutableDictionary *titleAttributes = [NSMutableDictionary dictionaryWithDictionary: attributes];
+        CTFontRef font = CTFontCreateCopyWithAttributes((CTFontRef) [attributes objectForKey: (NSString *) kCTFontAttributeName], 16.0, 0, 0);
+        [titleAttributes setValue: (id) font forKey: (NSString *) kCTFontAttributeName];
+        [titleAttributes setValue: (id) [[UIColor colorWithWhite: 0.5 alpha: 1.0] CGColor] forKey: (NSString *) kCTForegroundColorAttributeName];
+        CFAttributedStringRef titleStr = CFAttributedStringCreate(0, (CFStringRef) title, (CFDictionaryRef) titleAttributes);
+        titleLine = CTLineCreateWithAttributedString(titleStr);
+        CFRelease(title);
+    }
     // NSLog(@"Loading page %d from book %@", pageNum, self.path);
     if (! contents)
     {
@@ -149,9 +158,12 @@
 
     // NSLog(@"%d pages", [pages count]);
 
+    CFStringRef str = CFAttributedStringGetString(contents);
     for (; [pages count] <= pageNum && range.location < length;
          range.location += page.textRange.length)
     {
+        if (CFStringGetCharacterAtIndex(str, range.location) == '\n')
+            range.location += 1;
         range.length = (length - range.location) > kCharsPerPage ? kCharsPerPage : length - range.location;
         page = [[JJPage alloc] initWithContents: contents
                                         atRange: range
