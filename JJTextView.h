@@ -12,13 +12,13 @@
 @class DetailViewController;
 
 @interface JJTextView : UIView {
-    NSDictionary *textAttributes;
     CGRect pageFrame;
+    NSUInteger pageNum;
 }
 
-- (id)initWithFrame:(CGRect)frame;
+- (id)initWithFrame:(CGRect)frame andPage: (NSUInteger) page;
 
-@property (readonly) NSDictionary *textAttributes;
 @property (readonly) CGRect pageFrame;
+@property (readonly) NSUInteger pageNum;
 
 @end

@@ -11,10 +11,12 @@
 #import "JJBook.h"
 
 @interface JJScrollView : UIScrollView <UIScrollViewDelegate> {
-    JJTextView *textView;
+    JJTextView *previousView, *currentView, *nextView;
     JJBook *book;
+    NSDictionary *textAttributes;
 }
 
 @property (assign) JJBook *book;
+@property (readonly) NSDictionary *textAttributes;
 
 @end

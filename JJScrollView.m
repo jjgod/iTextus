@@ -11,7 +11,9 @@
 
 @implementation JJScrollView
 
-@synthesize book;
+@synthesize book, textAttributes;
+
+#define ARRSIZE(a)      (sizeof(a) / sizeof(a[0]))
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -22,73 +24,63 @@
 
         CGRect contentFrame = frame;
         contentFrame.size.width = frame.size.width * 2;
-        textView = [[JJTextView alloc] initWithFrame: contentFrame];
-        textView.contentMode = UIViewContentModeRedraw;
-		[self addSubview: textView];
+        currentView = [[JJTextView alloc] initWithFrame: frame andPage: 0];
+        [self addSubview: currentView];
+        [currentView release];
+
+        frame.origin.x += frame.size.width;
+        nextView = [[JJTextView alloc] initWithFrame: frame andPage: 1];
+        [self addSubview: nextView];
+        [nextView release];
+
+        CTFontRef font = CTFontCreateWithName(CFSTR("FZShuSong-Z01"), 24.0, NULL);
+        CGFloat paragraphSpacing = 4.0;
+        CGFloat lineSpacing = 8.0;
+        CTParagraphStyleSetting settings[] = {
+            { kCTParagraphStyleSpecifierParagraphSpacing, sizeof(CGFloat), &paragraphSpacing },
+            { kCTParagraphStyleSpecifierLineSpacing, sizeof(CGFloat), &lineSpacing },
+        };
+        CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(settings, ARRSIZE(settings));
+        textAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          (id) font, (NSString *) kCTFontAttributeName,
+                          (id) paragraphStyle, (NSString *) kCTParagraphStyleAttributeName, nil];
+        CFRelease(font);
+
         self.contentSize = contentFrame.size;
         self.pagingEnabled = YES;
         self.bounces = NO;
         self.maximumZoomScale = 1;
         self.minimumZoomScale = 1;
         self.delegate = self;
+        self.showsHorizontalScrollIndicator = NO;
     }
     return self;
 }
 
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    CGSize size = self.contentSize;
-    size.width = (book.pages.count + 1) * self.bounds.size.width;
-    if (size.width <= self.contentSize.width)
-        return;
-    self.contentSize = size;
-    CGRect frame = textView.frame;
-    frame.size = size;
-    textView.frame = frame;
-}
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-
-    // center the image as it becomes smaller than the size of the screen
-
-    CGSize boundsSize = self.bounds.size;
-    CGRect frameToCenter = textView.frame;
-
-    // center horizontally
-    if (frameToCenter.size.width < boundsSize.width)
-        frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2;
-    else
-        frameToCenter.origin.x = 0;
-
-    // center vertically
-    if (frameToCenter.size.height < boundsSize.height)
-        frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2;
-    else
-        frameToCenter.origin.y = 0;
-
-    textView.frame = frameToCenter;
-
-	// to handle the interaction between CATiledLayer and high resolution screens, we need to manually set the
-	// tiling view's contentScaleFactor to 1.0. (If we omitted this, it would be 2.0 on high resolution screens,
-	// which would cause the CATiledLayer to ask us for tiles of the wrong scales.)
-	textView.contentScaleFactor = 1.0;
+    NSInteger nextPageNum = self.contentOffset.x / self.frame.size.width + 1;
+    NSLog(@"endDecelerating: x = %g, w = %g, pn = %d", self.contentOffset.x, self.frame.size.width, nextPageNum);
+    if (nextView.pageNum < nextPageNum) {
+        previousView = currentView;
+        currentView = nextView;
+        CGRect pageFrame = currentView.frame;
+        pageFrame.origin.x += self.frame.size.width;
+        nextView = [[JJTextView alloc] initWithFrame: pageFrame andPage: nextPageNum];
+        [self addSubview: nextView];
+        [nextView release];
+        CGSize size = self.contentSize;
+        if (size.width < self.frame.size.width * (book.pages.count + 1)) {
+            size.width = self.frame.size.width * (book.pages.count + 1);
+            self.contentSize = size;
+        }
+    }
 }
 
 - (void)dealloc
 {
 	// Clean up
-    [textView release];
+    [currentView release];
     [super dealloc];
 }
 
