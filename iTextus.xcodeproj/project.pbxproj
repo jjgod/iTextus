@@ -44,6 +44,12 @@
 		072DDF7211152EC6004DE037 /* JJPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 072DDF7111152EC6004DE037 /* JJPage.m */; };
 		0749A64113B2A2C800E9C225 /* Stormtrooper.png in Resources */ = {isa = PBXBuildFile; fileRef = 0749A64013B2A2C800E9C225 /* Stormtrooper.png */; };
 		0749A64613B2A54C00E9C225 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 0749A64513B2A54C00E9C225 /* Default-Portrait~ipad.png */; };
+		07BAD7E2152232D100EC22BE /* array.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BAD7DA152232D100EC22BE /* array.c */; };
+		07BAD7E3152232D100EC22BE /* buffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BAD7DC152232D100EC22BE /* buffer.c */; };
+		07BAD7E4152232D100EC22BE /* markdown.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BAD7DE152232D100EC22BE /* markdown.c */; };
+		07BAD7E5152232D100EC22BE /* renderers.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BAD7E0152232D100EC22BE /* renderers.c */; };
+		07BAD7EE152242AA00EC22BE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BAD7ED152242AA00EC22BE /* QuartzCore.framework */; };
+		07BAD7F11522461A00EC22BE /* JJScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BAD7F01522461A00EC22BE /* JJScrollView.m */; };
 		1D3623260D0F684500981E51 /* iTextusAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* iTextusAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -133,6 +139,17 @@
 		072DDF7111152EC6004DE037 /* JJPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJPage.m; sourceTree = "<group>"; };
 		0749A64013B2A2C800E9C225 /* Stormtrooper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stormtrooper.png; sourceTree = "<group>"; };
 		0749A64513B2A54C00E9C225 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		07BAD7DA152232D100EC22BE /* array.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = array.c; sourceTree = "<group>"; };
+		07BAD7DB152232D100EC22BE /* array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = array.h; sourceTree = "<group>"; };
+		07BAD7DC152232D100EC22BE /* buffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = buffer.c; sourceTree = "<group>"; };
+		07BAD7DD152232D100EC22BE /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffer.h; sourceTree = "<group>"; };
+		07BAD7DE152232D100EC22BE /* markdown.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = markdown.c; sourceTree = "<group>"; };
+		07BAD7DF152232D100EC22BE /* markdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = markdown.h; sourceTree = "<group>"; };
+		07BAD7E0152232D100EC22BE /* renderers.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = renderers.c; sourceTree = "<group>"; };
+		07BAD7E1152232D100EC22BE /* renderers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = renderers.h; sourceTree = "<group>"; };
+		07BAD7ED152242AA00EC22BE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		07BAD7EF1522461A00EC22BE /* JJScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JJScrollView.h; path = ../JJScrollView.h; sourceTree = "<group>"; };
+		07BAD7F01522461A00EC22BE /* JJScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JJScrollView.m; path = ../JJScrollView.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* iTextusAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTextusAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* iTextusAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTextusAppDelegate.m; sourceTree = "<group>"; };
@@ -162,6 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07BAD7EE152242AA00EC22BE /* QuartzCore.framework in Frameworks */,
 				0723051A1113F9EB00F65F6B /* libCharsetDetector.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -267,9 +285,26 @@
 			path = "charset-detector/include";
 			sourceTree = "<group>";
 		};
+		07BAD7D9152232D100EC22BE /* libupskirt */ = {
+			isa = PBXGroup;
+			children = (
+				07BAD7DA152232D100EC22BE /* array.c */,
+				07BAD7DB152232D100EC22BE /* array.h */,
+				07BAD7DC152232D100EC22BE /* buffer.c */,
+				07BAD7DD152232D100EC22BE /* buffer.h */,
+				07BAD7DE152232D100EC22BE /* markdown.c */,
+				07BAD7DF152232D100EC22BE /* markdown.h */,
+				07BAD7E0152232D100EC22BE /* renderers.c */,
+				07BAD7E1152232D100EC22BE /* renderers.h */,
+			);
+			path = libupskirt;
+			sourceTree = "<group>";
+		};
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				07BAD7EF1522461A00EC22BE /* JJScrollView.h */,
+				07BAD7F01522461A00EC22BE /* JJScrollView.m */,
 				0723023711133B5A00F65F6B /* JJBook.h */,
 				0723023811133B5A00F65F6B /* JJBook.mm */,
 				1D3623240D0F684500981E51 /* iTextusAppDelegate.h */,
@@ -300,6 +335,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				07BAD7ED152242AA00EC22BE /* QuartzCore.framework */,
+				07BAD7D9152232D100EC22BE /* libupskirt */,
 				0749A64513B2A54C00E9C225 /* Default-Portrait~ipad.png */,
 				0749A64013B2A2C800E9C225 /* Stormtrooper.png */,
 				0723045C1113F07700F65F6B /* charset-detector */,
@@ -484,6 +521,11 @@
 				0723023911133B5A00F65F6B /* JJBook.mm in Sources */,
 				072DDF16111495A1004DE037 /* JJLine.m in Sources */,
 				072DDF7211152EC6004DE037 /* JJPage.m in Sources */,
+				07BAD7E2152232D100EC22BE /* array.c in Sources */,
+				07BAD7E3152232D100EC22BE /* buffer.c in Sources */,
+				07BAD7E4152232D100EC22BE /* markdown.c in Sources */,
+				07BAD7E5152232D100EC22BE /* renderers.c in Sources */,
+				07BAD7F11522461A00EC22BE /* JJScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

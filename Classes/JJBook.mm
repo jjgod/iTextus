@@ -171,7 +171,7 @@
         totalCharacters += page.textRange.length;
         [pages addObject: page];
         [page release];
-        // NSLog(@"%d pages created, range = %d, %d.", [pages count], page.textRange.location, page.textRange.length);
+        NSLog(@"%d pages created, range = %d, %d.", [pages count], page.textRange.location, page.textRange.length);
     }
 
     estimatedPages = totalCharacters < length ? length / (totalCharacters / pages.count)

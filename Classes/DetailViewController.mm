@@ -8,11 +8,11 @@
 
 #import "DetailViewController.h"
 #import "MasterViewController.h"
-#import "JJTextView.h"
+#import "JJScrollView.h"
 
 @implementation DetailViewController
 
-@synthesize popoverController, detailItem, textView;
+@synthesize popoverController, detailItem;
 
 #pragma mark -
 #pragma mark Managing the popover controller
@@ -31,9 +31,7 @@
 
         [[NSUserDefaults standardUserDefaults] setObject: detailItem.path
                                                   forKey: @"lastReadPath"];
-        [textView setController: self];
-        [textView setContentMode: UIViewContentModeTopLeft];
-        [textView setNeedsDisplay];
+        scrollView.book = detailItem;
     }
 
     if (popoverController != nil) {
@@ -78,7 +76,7 @@
       willShowViewController: (UIViewController *) aViewController
    invalidatingBarButtonItem: (UIBarButtonItem *) barButtonItem
 {
-    self.popoverController = nil;    
+    self.popoverController = nil;
 }
 
 
@@ -93,7 +91,7 @@
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     NSLog(@"didRotateFromInterfaceOrientation: %d", fromInterfaceOrientation);
-    [self.view setNeedsDisplay];
+    // [self.view setNeedsDisplay];
 }
 
 
@@ -121,6 +119,17 @@
 }
 */
 
+- (void)loadView {
+	[super loadView];
+
+	// Create our PDFScrollView and add it to the view controller.
+	scrollView = [[JJScrollView alloc] initWithFrame: self.view.bounds];
+    scrollView.autoresizesSubviews = YES;
+    scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+    [[self view] addSubview: scrollView];
+}
+
 - (void)viewDidLoad {
 }
 
@@ -144,7 +153,6 @@
 */
 
 - (void)dealloc {
-    [textView release];
     [popoverController release];
     [detailItem release];
     [super dealloc];

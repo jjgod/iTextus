@@ -9,20 +9,18 @@
 #import <UIKit/UIKit.h>
 #import <CoreText/CoreText.h>
 #import "JJBook.h"
-
-@class JJTextView;
+#import "JJScrollView.h"
 
 @interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate> {
     UIPopoverController *popoverController;
 
     JJBook *detailItem;
-    JJTextView *textView;
+    JJScrollView *scrollView;
 }
 
 @property (nonatomic, retain) UIPopoverController *popoverController;
 
 @property (nonatomic, retain) JJBook *detailItem;
-@property (nonatomic, retain) IBOutlet JJTextView *textView;
 
 - (void) hideAll;
 - (void) showAll;
