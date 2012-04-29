@@ -24,14 +24,8 @@
 
         CGRect contentFrame = frame;
         contentFrame.size.width = frame.size.width * 2;
-        currentView = [[JJTextView alloc] initWithFrame: frame andPage: 0];
-        [self addSubview: currentView];
-        [currentView release];
-
-        frame.origin.x += frame.size.width;
-        nextView = [[JJTextView alloc] initWithFrame: frame andPage: 1];
-        [self addSubview: nextView];
-        [nextView release];
+        views = [[NSMutableArray alloc] initWithCapacity: 3];
+        [self populateViews];
 
         CTFontRef font = CTFontCreateWithName(CFSTR("FZShuSong-Z01"), 24.0, NULL);
         CGFloat paragraphSpacing = 4.0;
@@ -57,30 +51,69 @@
     return self;
 }
 
-- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+- (JJTextView *) loadTextView: (NSInteger) pageNum
 {
-    NSInteger nextPageNum = self.contentOffset.x / self.frame.size.width + 1;
-    NSLog(@"endDecelerating: x = %g, w = %g, pn = %d", self.contentOffset.x, self.frame.size.width, nextPageNum);
-    if (nextView.pageNum < nextPageNum) {
-        previousView = currentView;
-        currentView = nextView;
-        CGRect pageFrame = currentView.frame;
-        pageFrame.origin.x += self.frame.size.width;
-        nextView = [[JJTextView alloc] initWithFrame: pageFrame andPage: nextPageNum];
-        [self addSubview: nextView];
-        [nextView release];
-        CGSize size = self.contentSize;
-        if (size.width < self.frame.size.width * (book.pages.count + 1)) {
-            size.width = self.frame.size.width * (book.pages.count + 1);
-            self.contentSize = size;
+    CGRect pageFrame = CGRectMake(pageNum * self.frame.size.width, 0,
+                                  self.frame.size.width,
+                                  self.frame.size.height);
+    JJTextView *view = [[JJTextView alloc] initWithFrame: pageFrame andPage: pageNum];
+    [self addSubview: view];
+    [view release];
+    return view;
+}
+
+- (void) populateViews
+{
+    NSInteger n = self.contentOffset.x / self.frame.size.width;
+    bool hasPrevView, hasCurrentView, hasNextView;
+
+    hasPrevView = hasCurrentView = hasNextView = NO;
+
+    NSMutableArray *viewsToRemove = [[NSMutableArray alloc] initWithCapacity: 3];
+    for (JJTextView *view in views) {
+        if (view.pageNum < n - 1 || view.pageNum > n + 1) {
+            [viewsToRemove addObject: view];
+        } else {
+            if (view.pageNum == n)
+                hasCurrentView = YES;
+            else if (view.pageNum == n - 1)
+                hasPrevView = YES;
+            else if (view.pageNum == n + 1)
+                hasNextView = YES;
         }
     }
+
+    for (JJTextView *view in viewsToRemove)
+    {
+        [view removeFromSuperview];
+        [views removeObject: view];
+    }
+
+    [viewsToRemove release];
+
+    CGSize size = self.contentSize;
+    if (size.width < self.frame.size.width * (book.pages.count + 1)) {
+        size.width = self.frame.size.width * (book.pages.count + 1);
+        self.contentSize = size;
+    }
+
+    if (n > 0 && ! hasPrevView)
+        [views addObject: [self loadTextView: n - 1]];
+    if (! hasCurrentView)
+        [views addObject: [self loadTextView: n]];
+    if (! hasNextView)
+        [views addObject: [self loadTextView: n + 1]];
+}
+
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self populateViews];
 }
 
 - (void)dealloc
 {
 	// Clean up
-    [currentView release];
+    [views release];
     [super dealloc];
 }
 

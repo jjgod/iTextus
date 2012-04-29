@@ -33,9 +33,8 @@
             textRange = CTFrameGetVisibleStringRange(textFrame);
             // NSLog(@"textRange: %d, %d", textRange.location, textRange.length);
             textRange.location = initialRange.location;
+            CFRelease(framesetter);
         }
-
-        CFRelease(framesetter);
     }
     return self;
 }

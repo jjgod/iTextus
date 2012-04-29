@@ -50,39 +50,33 @@
 
     CGContextSetTextMatrix(context, CGAffineTransformIdentity);
 
-    NSDate *currentTime = [NSDate date];
+    // NSDate *currentTime = [NSDate date];
     JJPage *page = [book loadPage: pageNum
                    withAttributes: ((JJScrollView *) self.superview).textAttributes
                             frame: pageFrame];
 
     if (page)
     {
-        NSLog(@"draw page %d", pageNum);
+        // NSLog(@"draw page %d", pageNum);
         CGContextSaveGState(context);
         CGContextConcatCTM(context, CGAffineTransformMakeScale(1, -1));
         CGContextConcatCTM(context, CGAffineTransformMakeTranslation(0, -(pageFrame.origin.y * 2 + 20 + pageFrame.size.height)));
-        // CGRect lineBounds = CTLineGetImageBounds(book.titleLine, context);
-        // CGContextSetTextPosition(context, (rect.size.width - lineBounds.size.width) / 2 - 10, pageFrame.origin.y + pageFrame.size.height + 35);
-        // CTLineDraw(book.titleLine, context);
+        CGRect lineBounds = CTLineGetImageBounds(book.titleLine, context);
+        CGContextSetTextPosition(context, (rect.size.width - lineBounds.size.width) / 2 - 10, pageFrame.origin.y + pageFrame.size.height + 35);
+        CTLineDraw(book.titleLine, context);
         CTFrameDraw(page.textFrame, context);
         CGContextRestoreGState(context);
     } else {
         book.lastReadPage = book.pages.count - 1;
     }
 
-    NSTimeInterval interval = -[currentTime timeIntervalSinceNow];
-    NSLog(@"used %g ms", interval * 1000);
+    // NSTimeInterval interval = -[currentTime timeIntervalSinceNow];
+    // NSLog(@"used %g ms", interval * 1000);
+}
 
-#if 0
-    // NSLog(@"estimatedPages = %d, pages = %d", book.estimatedPages, book.pages.count);
-    CGFloat seenWidth = rect.size.width * (book.lastReadPage + 1) / book.estimatedPages;
-
-    CGContextSetRGBFillColor(context, 0.7, 0.7, 0.7, 1.0);
-    CGContextFillRect(context, CGRectMake(0, rect.size.height - 5, seenWidth, 5));
-
-    CGContextSetRGBFillColor(context, 0.3, 0.3, 0.3, 1.0);
-    CGContextFillRect(context, CGRectMake(seenWidth, rect.size.height - 5, rect.size.width - seenWidth, 5));
-#endif
+- (void) dealloc
+{
+    [super dealloc];
 }
 
 @end

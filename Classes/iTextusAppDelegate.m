@@ -26,6 +26,7 @@
     // Override point for customization after app launch
     masterViewController = [[MasterViewController alloc] initWithStyle: UITableViewStylePlain];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController: masterViewController];
+    [masterViewController release];
 
     detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailView" bundle:nil];
     masterViewController.detailViewController = detailViewController;
@@ -33,6 +34,7 @@
     splitViewController = [[UISplitViewController alloc] init];
     splitViewController.viewControllers = [NSArray arrayWithObjects: navigationController, detailViewController, nil];
 	splitViewController.delegate = detailViewController;
+    [navigationController release];
 
     // Add the split view controller's view to the window and display.
     [window addSubview: splitViewController.view];

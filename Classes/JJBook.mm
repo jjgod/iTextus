@@ -116,14 +116,14 @@
        withAttributes: (NSDictionary *) attributes
                 frame: (CGRect) frame
 {
-    if (! titleLine) {
+    if (!titleLine) {
         NSMutableDictionary *titleAttributes = [NSMutableDictionary dictionaryWithDictionary: attributes];
         CTFontRef font = CTFontCreateCopyWithAttributes((CTFontRef) [attributes objectForKey: (NSString *) kCTFontAttributeName], 16.0, 0, 0);
         [titleAttributes setValue: (id) font forKey: (NSString *) kCTFontAttributeName];
         [titleAttributes setValue: (id) [[UIColor colorWithWhite: 0.5 alpha: 1.0] CGColor] forKey: (NSString *) kCTForegroundColorAttributeName];
         CFAttributedStringRef titleStr = CFAttributedStringCreate(0, (CFStringRef) title, (CFDictionaryRef) titleAttributes);
         titleLine = CTLineCreateWithAttributedString(titleStr);
-        CFRelease(title);
+        CFRelease(titleStr);
     }
     // NSLog(@"Loading page %d from book %@", pageNum, self.path);
     if (! contents)
@@ -171,7 +171,7 @@
         totalCharacters += page.textRange.length;
         [pages addObject: page];
         [page release];
-        NSLog(@"%d pages created, range = %d, %d.", [pages count], page.textRange.location, page.textRange.length);
+        NSLog(@"%d pages created, range = %lu, %lu.", [pages count], page.textRange.location, page.textRange.length);
     }
 
     estimatedPages = totalCharacters < length ? length / (totalCharacters / pages.count)
