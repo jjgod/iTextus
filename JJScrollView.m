@@ -53,6 +53,7 @@
 
 - (JJTextView *) loadTextView: (NSInteger) pageNum
 {
+    NSLog(@"loadTextView: %d", pageNum);
     CGRect pageFrame = CGRectMake(pageNum * self.frame.size.width, 0,
                                   self.frame.size.width,
                                   self.frame.size.height);
@@ -64,21 +65,22 @@
 
 - (void) populateViews
 {
-    NSInteger n = self.contentOffset.x / self.frame.size.width;
+    int n = self.contentOffset.x / self.frame.size.width;
     bool hasPrevView, hasCurrentView, hasNextView;
 
     hasPrevView = hasCurrentView = hasNextView = NO;
 
     NSMutableArray *viewsToRemove = [[NSMutableArray alloc] initWithCapacity: 3];
     for (JJTextView *view in views) {
-        if (view.pageNum < n - 1 || view.pageNum > n + 1) {
+        int pageNum = view.pageNum;
+        if (pageNum < n - 1 || pageNum > n + 1) {
             [viewsToRemove addObject: view];
         } else {
-            if (view.pageNum == n)
+            if (pageNum == n)
                 hasCurrentView = YES;
-            else if (view.pageNum == n - 1)
+            else if (pageNum == n - 1)
                 hasPrevView = YES;
-            else if (view.pageNum == n + 1)
+            else if (pageNum == n + 1)
                 hasNextView = YES;
         }
     }
@@ -105,7 +107,7 @@
         [views addObject: [self loadTextView: n + 1]];
 }
 
-- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+- (void)layoutSubviews
 {
     [self populateViews];
 }

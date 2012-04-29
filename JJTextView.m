@@ -31,11 +31,11 @@
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
 
-    UIImage *tile = [UIImage imageNamed: @"brushed_alu.png"];
-    UIColor *color = [UIColor colorWithPatternImage: tile];
-    [color setFill];
+    // UIImage *tile = [UIImage imageNamed: @"brushed_alu.png"];
+    // UIColor *color = [UIColor colorWithPatternImage: tile];
+    // [color setFill];
 
-    // CGContextSetRGBFillColor(context, 1.0, 1.0, 0.85, 1.0);
+    CGContextSetRGBFillColor(context, 1.0, 1.0, 0.85, 1.0);
     CGContextFillRect(context, rect);
 
     JJBook *book = ((JJScrollView *) self.superview).book;
