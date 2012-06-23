@@ -3,7 +3,6 @@
 //  iTextus
 //
 //  Created by Jiang Jiang on 1/29/10.
-//  Copyright 2010 Jjgod Jiang. All rights reserved.
 //
 
 #import "JJTextView.h"
@@ -29,14 +28,18 @@
 // An empty implementation adversely affects performance during animation.
 -(void) drawRect:(CGRect)rect
 {
+    // NSLog(@"drawRect: %@", NSStringFromCGRect(rect));
     CGContextRef context = UIGraphicsGetCurrentContext();
 
-    // UIImage *tile = [UIImage imageNamed: @"brushed_alu.png"];
-    // UIColor *color = [UIColor colorWithPatternImage: tile];
-    // [color setFill];
+    UIImage *tile = [UIImage imageNamed: @"brushed_alu.png"];
+    UIColor *color = [UIColor colorWithPatternImage: tile];
+    [color setFill];
 
-    CGContextSetRGBFillColor(context, 1.0, 1.0, 0.85, 1.0);
+    // CGContextSetRGBFillColor(context, 1.0, 1.0, 0.85, 1.0);
     CGContextFillRect(context, rect);
+    
+    CGContextSetRGBFillColor(context, 0.3, 0.3, 0.3, 1.0);
+    CGContextFillRect(context, CGRectMake(0, 0, 3.0, 1024));
 
     JJBook *book = ((JJScrollView *) self.superview).book;
 
@@ -70,12 +73,20 @@
         book.lastReadPage = book.pages.count - 1;
     }
 
+    JJScrollView *scrollView = (JJScrollView *) self.superview;
+    CGSize size = scrollView.contentSize;
+    NSLog(@"pages: %d", book.pages.count);
+    if (size.width < self.frame.size.width * (book.pages.count + 1)) {
+        size.width = self.frame.size.width * (book.pages.count + 1);
+        scrollView.contentSize = size;
+    }
     // NSTimeInterval interval = -[currentTime timeIntervalSinceNow];
     // NSLog(@"used %g ms", interval * 1000);
 }
 
 - (void) dealloc
 {
+    NSLog(@"dealloc page view %d", pageNum);
     [super dealloc];
 }
 

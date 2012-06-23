@@ -3,7 +3,6 @@
 //  iTextus
 //
 //  Created by Jiang Jiang on 1/29/10.
-//  Copyright Jjgod Jiang 2010. All rights reserved.
 //
 
 #import "iTextusAppDelegate.h"
@@ -23,6 +22,8 @@
 
 - (BOOL) application: (UIApplication *) application didFinishLaunchingWithOptions: (NSDictionary *) launchOptions
 {
+    [[UIApplication sharedApplication] setStatusBarHidden: YES
+                                            withAnimation: UIStatusBarAnimationNone];
     // Override point for customization after app launch
     masterViewController = [[MasterViewController alloc] initWithStyle: UITableViewStylePlain];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController: masterViewController];

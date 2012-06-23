@@ -3,7 +3,6 @@
 //  iTextus
 //
 //  Created by Jiang Jiang on 3/27/12.
-//  Copyright (c) 2012 Nokia. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -20,5 +19,6 @@
 @property (readonly) NSDictionary *textAttributes;
 
 - (void) populateViews;
+- (JJTextView *) loadTextView: (NSInteger) pageNum;
 
 @end

@@ -3,7 +3,6 @@
 //  iTextus
 //
 //  Created by Jiang Jiang on 1/29/10.
-//  Copyright Jjgod Jiang 2010. All rights reserved.
 //
 
 #import "DetailViewController.h"
@@ -24,11 +23,6 @@
     if (detailItem != newDetailItem) {
         [detailItem release];
         detailItem = [newDetailItem retain];
-
-        // [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackTranslucent];
-        // Update the view.
-        // navigationBar.topItem.title = [detailItem description];
-
         [[NSUserDefaults standardUserDefaults] setObject: detailItem.path
                                                   forKey: @"lastReadPath"];
         scrollView.book = detailItem;
@@ -120,14 +114,13 @@
 */
 
 - (void)loadView {
-	[super loadView];
-
+    [self setWantsFullScreenLayout: YES];
 	// Create our PDFScrollView and add it to the view controller.
-	scrollView = [[JJScrollView alloc] initWithFrame: self.view.bounds];
+    NSLog(@"%@", NSStringFromCGRect([UIScreen mainScreen].bounds));
+	scrollView = [[JJScrollView alloc] initWithFrame: [UIScreen mainScreen].bounds];
     scrollView.autoresizesSubviews = YES;
     scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
-    [[self view] addSubview: scrollView];
+    self.view = scrollView;
 }
 
 - (void)viewDidLoad {

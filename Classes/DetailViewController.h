@@ -3,7 +3,6 @@
 //  iTextus
 //
 //  Created by Jiang Jiang on 1/29/10.
-//  Copyright Jjgod Jiang 2010. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

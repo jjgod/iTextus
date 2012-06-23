@@ -3,7 +3,6 @@
 //  iTextus
 //
 //  Created by Jiang Jiang on 3/27/12.
-//  Copyright (c) 2012 Nokia. All rights reserved.
 //
 
 #import "JJScrollView.h"
@@ -11,7 +10,8 @@
 
 @implementation JJScrollView
 
-@synthesize book, textAttributes;
+@synthesize textAttributes;
+@dynamic book;
 
 #define ARRSIZE(a)      (sizeof(a) / sizeof(a[0]))
 
@@ -22,10 +22,11 @@
         // Initialization code
         NSLog(@"initialize: %@", NSStringFromCGRect(frame));
 
-        CGRect contentFrame = frame;
-        contentFrame.size.width = frame.size.width * 2;
         views = [[NSMutableArray alloc] initWithCapacity: 3];
-        [self populateViews];
+
+        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+        [self addGestureRecognizer: singleTap];
+        [singleTap release];
 
         CTFontRef font = CTFontCreateWithName(CFSTR("FZShuSong-Z01"), 24.0, NULL);
         CGFloat paragraphSpacing = 4.0;
@@ -40,7 +41,7 @@
                           (id) paragraphStyle, (NSString *) kCTParagraphStyleAttributeName, nil];
         CFRelease(font);
 
-        self.contentSize = contentFrame.size;
+        self.contentSize = self.frame.size;
         self.pagingEnabled = YES;
         self.bounces = NO;
         self.maximumZoomScale = 1;
@@ -53,10 +54,10 @@
 
 - (JJTextView *) loadTextView: (NSInteger) pageNum
 {
-    NSLog(@"loadTextView: %d", pageNum);
-    CGRect pageFrame = CGRectMake(pageNum * self.frame.size.width, 0,
-                                  self.frame.size.width,
-                                  self.frame.size.height);
+    CGRect pageFrame = CGRectMake(pageNum * self.bounds.size.width, 0,
+                                  self.bounds.size.width,
+                                  self.bounds.size.height);
+    NSLog(@"loadTextView: %d, %@", pageNum, NSStringFromCGRect(pageFrame));
     JJTextView *view = [[JJTextView alloc] initWithFrame: pageFrame andPage: pageNum];
     [self addSubview: view];
     [view release];
@@ -93,23 +94,57 @@
 
     [viewsToRemove release];
 
-    CGSize size = self.contentSize;
-    if (size.width < self.frame.size.width * (book.pages.count + 1)) {
-        size.width = self.frame.size.width * (book.pages.count + 1);
-        self.contentSize = size;
-    }
-
-    if (n > 0 && ! hasPrevView)
-        [views addObject: [self loadTextView: n - 1]];
-    if (! hasCurrentView)
-        [views addObject: [self loadTextView: n]];
-    if (! hasNextView)
-        [views addObject: [self loadTextView: n + 1]];
+    dispatch_queue_t queue = dispatch_get_main_queue();
+    dispatch_async(queue, ^{
+        if (n > 0 && ! hasPrevView)
+            [views addObject: [self loadTextView: n - 1]];
+        if (! hasCurrentView)
+            [views addObject: [self loadTextView: n]];
+        if (! hasNextView)
+            [views addObject: [self loadTextView: n + 1]];
+    });
 }
 
-- (void)layoutSubviews
+- (void) layoutSubviews
 {
     [self populateViews];
+}
+
+- (void) handleSingleTap: (UITapGestureRecognizer *) sender
+{
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        CGPoint location = [sender locationOfTouch: 0 inView: self];
+        int x = (int) location.x % (int) self.frame.size.width;
+        if (x > 600 || x < 150) {
+            CGFloat nextX = location.x - x;
+            if (x > 600)
+                nextX += self.frame.size.width;
+            else
+                nextX -= self.frame.size.width;
+            [self setContentOffset: CGPointMake(nextX, 0)
+                          animated: YES];
+        } else {
+            [[UIApplication sharedApplication] setStatusBarHidden: ![[UIApplication sharedApplication] isStatusBarHidden]
+                                                    withAnimation: UIStatusBarAnimationSlide];
+        }
+    }
+}
+
+- (void) setBook:(JJBook *)_book
+{
+    if (![book.path isEqualToString: _book.path]) {
+        book = _book;
+        NSLog(@"setBook: %@", book);
+        for (JJTextView *view in views)
+            [view removeFromSuperview];
+        [views removeAllObjects];
+        [self populateViews];
+    }
+}
+
+- (JJBook *) book
+{
+    return book;
 }
 
 - (void)dealloc
