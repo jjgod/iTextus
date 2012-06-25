@@ -118,8 +118,6 @@
 	// Create our PDFScrollView and add it to the view controller.
     NSLog(@"%@", NSStringFromCGRect([UIScreen mainScreen].bounds));
 	scrollView = [[JJScrollView alloc] initWithFrame: [UIScreen mainScreen].bounds];
-    scrollView.autoresizesSubviews = YES;
-    scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.view = scrollView;
 }
 

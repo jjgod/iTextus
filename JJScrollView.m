@@ -28,7 +28,7 @@
         [self addGestureRecognizer: singleTap];
         [singleTap release];
 
-        CTFontRef font = CTFontCreateWithName(CFSTR("FZShuSong-Z01"), 24.0, NULL);
+        CTFontRef font = CTFontCreateWithName(CFSTR("KozSong-Regular"), 24.0, NULL);
         CGFloat paragraphSpacing = 4.0;
         CGFloat lineSpacing = 8.0;
         CTParagraphStyleSetting settings[] = {
@@ -41,9 +41,12 @@
                           (id) paragraphStyle, (NSString *) kCTParagraphStyleAttributeName, nil];
         CFRelease(font);
 
+        self.autoresizesSubviews = NO;
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.contentSize = self.frame.size;
         self.pagingEnabled = YES;
-        self.bounces = NO;
+        self.bounces = YES;
+        self.alwaysBounceHorizontal = YES;
         self.maximumZoomScale = 1;
         self.minimumZoomScale = 1;
         self.delegate = self;
@@ -86,14 +89,6 @@
         }
     }
 
-    for (JJTextView *view in viewsToRemove)
-    {
-        [view removeFromSuperview];
-        [views removeObject: view];
-    }
-
-    [viewsToRemove release];
-
     dispatch_queue_t queue = dispatch_get_main_queue();
     dispatch_async(queue, ^{
         if (n > 0 && ! hasPrevView)
@@ -102,6 +97,14 @@
             [views addObject: [self loadTextView: n]];
         if (! hasNextView)
             [views addObject: [self loadTextView: n + 1]];
+
+        for (JJTextView *view in viewsToRemove)
+        {
+            [view removeFromSuperview];
+            [views removeObject: view];
+        }
+
+        [viewsToRemove release];
     });
 }
 
@@ -121,6 +124,8 @@
                 nextX += self.frame.size.width;
             else
                 nextX -= self.frame.size.width;
+            if (nextX < 0)
+                return;
             [self setContentOffset: CGPointMake(nextX, 0)
                           animated: YES];
         } else {

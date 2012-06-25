@@ -20,7 +20,9 @@
 
 // Ensure that the view controller supports rotation and that the split view can therefore show in both portrait and landscape.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	return YES;
+	if (interfaceOrientation == UIInterfaceOrientationPortrait)
+        return YES;
+    return NO;
 }
 
 
