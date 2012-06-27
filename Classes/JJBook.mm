@@ -108,7 +108,7 @@
     return self.title;
 }
 
-#define kCharsPerPage   1024
+#define kCharsPerPage   2048
 
 // Load book from local storage
 - (JJPage *) loadPage: (NSUInteger) pageNum
@@ -170,7 +170,7 @@
         totalCharacters += page.textRange.length;
         [pages addObject: page];
         [page release];
-        NSLog(@"%d pages created, range = %lu, %lu.", [pages count], page.textRange.location, page.textRange.length);
+        // NSLog(@"%d pages created, range = %lu, %lu.", [pages count], page.textRange.location, page.textRange.length);
     }
 
     estimatedPages = totalCharacters < length ? length / (totalCharacters / pages.count)

@@ -24,6 +24,14 @@
 {
     [[UIApplication sharedApplication] setStatusBarHidden: YES
                                             withAnimation: UIStatusBarAnimationNone];
+
+    NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 @"KozSong-Regular", @"fontName",
+                                 [NSNumber numberWithFloat: 24.0], @"fontSize",
+                                 [NSNumber numberWithFloat: 1.0], @"paragraphSpacing",
+                                 [NSNumber numberWithFloat: 8.0], @"lineSpacing", nil];
+    [[NSUserDefaults standardUserDefaults] registerDefaults: appDefaults];
+
     // Override point for customization after app launch
     masterViewController = [[MasterViewController alloc] initWithStyle: UITableViewStylePlain];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController: masterViewController];

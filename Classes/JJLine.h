@@ -7,13 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreText/CoreText.h>
 
 @interface JJLine : NSObject {
-    NSUInteger start;
+    CTLineRef line;
+    CGFloat origin;
 }
 
-@property (assign) NSUInteger start;
+@property (assign) CGFloat origin;
+@property (readonly) CTLineRef line;
 
-- (id) initWithStart: (NSUInteger) start;
+- (id) initWithLine: (CTLineRef) line origin: (CGFloat) origin;
 
 @end

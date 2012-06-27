@@ -7,6 +7,7 @@
 
 #import "JJTextView.h"
 #import "JJScrollView.h"
+#import "JJLine.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation JJTextView
@@ -51,7 +52,7 @@
     if (! book)
         return;
 
-    CGContextSetTextMatrix(context, CGAffineTransformIdentity);
+    CGContextSetTextMatrix(context, CGAffineTransformMakeScale(1, -1));
 
     // NSDate *currentTime = [NSDate date];
     JJPage *page = [book loadPage: pageNum
@@ -62,12 +63,13 @@
     {
         // NSLog(@"draw page %d", pageNum);
         CGContextSaveGState(context);
-        CGContextConcatCTM(context, CGAffineTransformMakeScale(1, -1));
-        CGContextConcatCTM(context, CGAffineTransformMakeTranslation(0, -(pageFrame.origin.y * 2 + 20 + pageFrame.size.height)));
         CGRect lineBounds = CTLineGetImageBounds(book.titleLine, context);
-        CGContextSetTextPosition(context, (rect.size.width - lineBounds.size.width) / 2 - 10, pageFrame.origin.y + pageFrame.size.height + 35);
+        CGContextSetTextPosition(context, (rect.size.width - lineBounds.size.width) / 2 - 10, 35);
         CTLineDraw(book.titleLine, context);
-        CTFrameDraw(page.textFrame, context);
+        for (JJLine *line in page.lines) {
+            CGContextSetTextPosition(context, pageFrame.origin.x, pageFrame.origin.y + line.origin);
+            CTLineDraw(line.line, context);
+        }
         CGContextRestoreGState(context);
     } else {
         book.lastReadPage = book.pages.count - 1;
@@ -75,7 +77,7 @@
 
     JJScrollView *scrollView = (JJScrollView *) self.superview;
     CGSize size = scrollView.contentSize;
-    NSLog(@"pages: %d", book.pages.count);
+    // NSLog(@"pages: %d", book.pages.count);
     if (size.width < self.frame.size.width * (book.pages.count + 1)) {
         size.width = self.frame.size.width * (book.pages.count + 1);
         scrollView.contentSize = size;
@@ -86,7 +88,7 @@
 
 - (void) dealloc
 {
-    NSLog(@"dealloc page view %d", pageNum);
+    // NSLog(@"dealloc page view %d", pageNum);
     [super dealloc];
 }
 

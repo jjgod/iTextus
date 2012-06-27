@@ -10,14 +10,22 @@
 
 @implementation JJLine
 
-@synthesize start;
+@synthesize origin, line;
 
-- (id) initWithStart:(NSUInteger)theStart
+- (id) initWithLine:(CTLineRef) theLine origin: (CGFloat) theOrigin
 {
     if (self = [super init]) {
-        start = theStart;
+        line = CFRetain(theLine);
+        origin = theOrigin;
     }
     return self;
+}
+
+- (void) dealloc
+{
+    CFRelease(line);
+    line = NULL;
+    [super dealloc];
 }
 
 @end

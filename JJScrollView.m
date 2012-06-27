@@ -28,17 +28,12 @@
         [self addGestureRecognizer: singleTap];
         [singleTap release];
 
-        CTFontRef font = CTFontCreateWithName(CFSTR("KozSong-Regular"), 24.0, NULL);
-        CGFloat paragraphSpacing = 4.0;
-        CGFloat lineSpacing = 8.0;
-        CTParagraphStyleSetting settings[] = {
-            { kCTParagraphStyleSpecifierParagraphSpacing, sizeof(CGFloat), &paragraphSpacing },
-            { kCTParagraphStyleSpecifierLineSpacing, sizeof(CGFloat), &lineSpacing },
-        };
-        CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(settings, ARRSIZE(settings));
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+        CTFontRef font = CTFontCreateWithName((CFStringRef) [defaults stringForKey: @"fontName"],
+                                              [defaults floatForKey: @"fontSize"], NULL);
         textAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          (id) font, (NSString *) kCTFontAttributeName,
-                          (id) paragraphStyle, (NSString *) kCTParagraphStyleAttributeName, nil];
+                          (id) font, (NSString *) kCTFontAttributeName, nil];
         CFRelease(font);
 
         self.autoresizesSubviews = NO;
@@ -60,7 +55,7 @@
     CGRect pageFrame = CGRectMake(pageNum * self.bounds.size.width, 0,
                                   self.bounds.size.width,
                                   self.bounds.size.height);
-    NSLog(@"loadTextView: %d, %@", pageNum, NSStringFromCGRect(pageFrame));
+    // NSLog(@"loadTextView: %d, %@", pageNum, NSStringFromCGRect(pageFrame));
     JJTextView *view = [[JJTextView alloc] initWithFrame: pageFrame andPage: pageNum];
     [self addSubview: view];
     [view release];
@@ -139,7 +134,7 @@
 {
     if (![book.path isEqualToString: _book.path]) {
         book = _book;
-        NSLog(@"setBook: %@", book);
+        // NSLog(@"setBook: %@", book);
         for (JJTextView *view in views)
             [view removeFromSuperview];
         [views removeAllObjects];
